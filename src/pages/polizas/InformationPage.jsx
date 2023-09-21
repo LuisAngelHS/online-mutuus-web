@@ -6,37 +6,44 @@ import { Link as RouLink} from "react-router-dom"
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 export const InformationPage = () => {
   return (
-    <PolizasLayout >
-        <Grid container  spacing={2}>
+    <PolizasLayout title="">
+        <Grid container  spacing={3}>
             <Grid item xs={ 12 } md={12} lg={12}>
             <p>Jose Pedro Gomez, por favor ingresa la siguiente información: </p>
             </Grid>
            
-            <Grid className="container-internal_users" item xs={ 12 } md={6} lg={6} sx={{ mt: 5 }}>
-            <p>Fecha de Nacimiento: * </p>
-            <TextField sx={{ ml: 2 }} type="number"  size="small"/>
+            <Grid item xs={ 12 } md={3} lg={3}>
+            <label htmlFor="Fecha">Fecha de Nacimiento: *</label>
+            </Grid>
+            <Grid item xs={ 12 } md={3} lg={3} >
+            <TextField type="number"  size="small"/>
             </Grid>
             
-            <Grid className="container-internal_users" item xs={ 12 } md={6} lg={6} sx={{ mt: 5 }}>
-            <p>RFC: * </p>
-            <TextField sx={{ ml: 2 }} type="number"  size="small"/>
+            <Grid item xs={ 12 } md={2} lg={2}>
+            <label htmlFor="RFC">RFC: *</label>
+            </Grid>
+            <Grid item xs={ 12 } md={4} lg={4} >
+            <TextField type="number"  size="small"/>
             </Grid>
 
-              
-            <Grid className="container-internal_users" item xs={ 12 } md={6} lg={6}>
-            <p>Peso: * </p>
-            <TextField sx={{ ml: 2 }} type="number"  size="small"/>
+            <Grid item xs={ 12 } md={3} lg={3}>
+            <label htmlFor="Peso">Peso (Kg.): *</label>
             </Grid>
-              
-            <Grid className="container-internal_users" item xs={ 12 } md={6} lg={6}>
-            <p>Estatura: * </p>
-            <TextField sx={{ ml: 2 }} type="number"  size="small"/>
+            <Grid item xs={ 12 } md={3} lg={3} >
+            <TextField type="number"  size="small"/> 
+            </Grid>
+
+
+            <Grid item xs={ 12 } md={2} lg={2}>
+            <label htmlFor="Estatura">Estatura (M): *</label>
+            </Grid>
+            <Grid item xs={ 12 } md={4} lg={4} >
+            <TextField type="number"  size="small"/> 
             </Grid>
         </Grid>
 
         <Grid container sx={{ mt: 8 }} justifyContent='center'>
-           
-        <Checkbox {...label} />
+            <Checkbox {...label} />
             <Link sx={{ mt: 1 }} component={RouLink} to='/terms'>Acepto los terminos y condiciones</Link>
             <Grid item xs={ 12} md={12} lg={12}  textAlign='center' sx={{ mt: 3, color: 'error.main' }} >
             <p>Es necesario que acepte los términos y condiciones para continuar.</p>
@@ -46,7 +53,7 @@ export const InformationPage = () => {
        
         <Grid container spacing={ 5 } sx={{ mt: 5 }}>
         <Grid item xs={ 12 } md={12} lg={12}textAlign='end'>
-                <Button variant='contained' >
+                <Button variant='contained' component={RouLink}  to='/membershi'>
                  Continuar
                 </Button>
             </Grid>

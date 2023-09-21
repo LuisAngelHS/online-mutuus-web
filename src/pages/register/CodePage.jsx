@@ -10,16 +10,16 @@ export const CodePage = () => {
         </Grid>
         <Grid container sx={{ mt: 10 }}>
             <Grid  item xs={ 6 } md={3} lg={3}  textAlign='center'>
-            <TextField className="input-code" type="number" />
+            <TextField className="input-code"/>
             </Grid>
             <Grid  item xs={ 6 } md={3} lg={3}  textAlign='center'>
-            <TextField className="input-code" type="number" />
+            <TextField className="input-code"/>
             </Grid>
             <Grid  item xs={ 6 } md={3} lg={3}  textAlign='center'>
-            <TextField className="input-code" type="number" />
+            <TextField className="input-code"/>
             </Grid>
             <Grid  item xs={ 6} md={3} lg={3}  textAlign='center'>
-            <TextField className="input-code" type="number" maxRows={1}/>
+            <TextField className="input-code"/>
             </Grid>
             <Grid item xs={ 12} md={12} lg={12}  textAlign='center' sx={{ mt: 3, color: 'error.main' }} >
             <p>Código incorrector favor de Verificar.</p>
@@ -29,47 +29,16 @@ export const CodePage = () => {
        
         <Grid container spacing={ 5 } sx={{ mb: 2, mt: 5 }}>
             <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <Button variant='contained' >
+                <Button sx={{ backgroundColor: 'secondary.main' }} variant='contained' >
                   Reenviar código
                 </Button>
             </Grid>
               <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <Button variant='contained' LinkComponent={Link} to='/information'>
+                <Button variant='contained' component={Link} to='/information'>
                  Continuar
                 </Button>
             </Grid>
         </Grid>
-{/* 
-        <div className="container-code_access">
-    
-    <div className="input-code_access">
-      <input
-        type="number"
-        className="input-code"
-        data-index="1"
-      />
-      <input
-     
-        type="number"
-        className="input-code"
-        data-index="2"
-      />
-      <input
-       
-        type="number"
-        className="input-code"
-        data-index="3"
-      />
-      <input
-       
-        type="number"
-        className="input-code"
-        data-index="4"
-      />
-    
-    </div>
-  </div> */}
-        
     </MenuLayout>
   )
 }

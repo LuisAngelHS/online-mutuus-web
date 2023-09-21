@@ -1,11 +1,20 @@
 .box-shadow {
   box-shadow: 100px 55px 50px rgba(0, 0, 0, 0.2);
 }
+.button-secund{
+  width: 150px;
+  height: 40px;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 18px;
+}
+
 
 .input-code {
   width: 50px;
 }
-
+.nav-app{
+  background-color: #183B91;
+}
 .container-internal_users {
   display: flex;
   flex-wrap: wrap;

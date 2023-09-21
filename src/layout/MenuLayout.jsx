@@ -10,7 +10,7 @@ export const MenuLayout = ({ children, title = ''  }) => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      sx={{  padding: 15}}
+      sx={{  padding: 16}}
     >
       <NavBar/>
       <Grid item sx={{ width: { xs:200, sm: 400, md:500, lg:750},}}>

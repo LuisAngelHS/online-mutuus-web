@@ -8,7 +8,7 @@ export const RegisterPage = () => {
     <MenuLayout title="Contratación en línea">
         <form>
           <Grid container spacing={ 3 } >
-            <Grid  item xs={ 12 } md={3} lg={3} sx={{ alignItems: 'center' }}>
+            <Grid  item xs={ 12 } md={3} lg={3}>
             <label htmlFor="Nombre">Nombre completo: *</label>
             </Grid>
             <Grid item xs={ 12 } md={9} lg={9}>
@@ -17,9 +17,10 @@ export const RegisterPage = () => {
                 type="text" 
                 placeholder='Nombre completo' 
                 fullWidth
+                size="small"
               />
             </Grid>
-            <Grid  item xs={ 12 } md={3} lg={3}  sx={{ mb: 2, mt: 1 }}>
+            <Grid  item xs={ 12 } md={3} lg={3}>
             <label htmlFor="Correo">Correo electrónico: *</label>
             </Grid>
             <Grid item xs={ 12 } md={9} lg={9}>
@@ -28,6 +29,7 @@ export const RegisterPage = () => {
                 type="email" 
                 placeholder='correo@google.com' 
                 fullWidth
+                size="small"
               />
             </Grid>
             <Grid  item xs={ 12 } md={3} lg={3}>
@@ -39,6 +41,7 @@ export const RegisterPage = () => {
                 type="password" 
                 placeholder='Contraseña' 
                 fullWidth
+                size="small"
               />
             </Grid>
             <Grid  item xs={ 12 } md={3} lg={3}>
@@ -50,6 +53,7 @@ export const RegisterPage = () => {
                 type="password" 
                 placeholder='Contraseña' 
                 fullWidth
+                size="small"
               />
             </Grid>
             <Grid  item xs={ 12 } md={3} lg={3}>
@@ -61,16 +65,17 @@ export const RegisterPage = () => {
                 type="number" 
                 placeholder='5556968596' 
                 fullWidth
+                size="small"
               />
             </Grid>
             <Grid container spacing={ 5 } sx={{ mb: 2, mt: 1 }}>
               <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <Button variant='contained' >
+                <Button sx={{ backgroundColor: 'secondary.main' }} variant='contained' component={Link} to='/login'>
                   Cancelar
                 </Button>
               </Grid>
               <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <Button variant='contained' LinkComponent={Link} to='/code'>
+                <Button variant='contained' component={Link} to='/code'>
                  Continuar
                 </Button>
               </Grid>
