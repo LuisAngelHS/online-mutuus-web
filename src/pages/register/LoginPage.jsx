@@ -6,12 +6,12 @@ export const LoginPage = () => {
   return (
     <MenuLayout title="Contratación en línea">
         <form>
-          <Grid container > 
-            <Grid container spacing={ 3 }  sx={{ mb: 2, mt: 2 }} justifyContent='center' alignItems='center'>
+          <Grid container> 
+            <Grid container spacing={ 2 }  sx={{ mb: 2, mt: 0}} justifyContent='center' alignItems='center'>
             <Grid  item xs={ 12 } md={4} lg={3}>
             <label htmlFor="Correo">Correo electrónico: *</label>
             </Grid>
-            <Grid item xs={ 12 } md={7} lg={5}>
+            <Grid item xs={ 12 } md={8} lg={6}>
               <TextField 
                 label="Correo" 
                 type="email" 
@@ -22,11 +22,11 @@ export const LoginPage = () => {
             </Grid>
             </Grid>
             
-            <Grid container spacing={ 3 } justifyContent='center' alignItems='center'>
+            <Grid container spacing={ 2 } sx={{ mb: 2, mt: 0}}  justifyContent='center' alignItems='center'>
             <Grid  item xs={ 12 } md={4} lg={3}>
             <label htmlFor="contraseña">Contraseña: *</label>
             </Grid>
-            <Grid item xs={ 12 } md={7} lg={5}>
+            <Grid item xs={ 12 } md={8} lg={6}>
               <TextField 
                 label="Contraseña" 
                 type="password" 
@@ -37,12 +37,12 @@ export const LoginPage = () => {
             </Grid>
             </Grid>
 
-            <Grid container spacing={ 4 } sx={{ mb: 2, mt: 5 }} justifyContent='center' alignItems='center'>
-            <Grid  item xs={ 12 } md={5} lg={3} >
-            <Link sx={{ mt: 1 }} component={RouLink} to='/password'>Olvide mi contraseña.</Link>
+            <Grid container spacing={ 3 } sx={{ mb: 2, mt: 3 }} justifyContent='center' alignItems='center'>
+            <Grid  item xs={ 12 } md={5} lg={4} >
+            <Link sx={{ mt: 1, fontSize:15, fontFamily:'Gilam Book' }} component={RouLink} to='/password'>Olvide mi contraseña.</Link>
             </Grid>
               <Grid item xs={ 12 } md={ 7 } lg={5} textAlign='end'>
-                <Button variant='contained' component={RouLink} to='/register'>
+                <Button sx={{ fontFamily:'Gilam Regular' }} variant='contained' component={RouLink} to='/register'>
                  Continuar
                 </Button>
               </Grid>

@@ -9,11 +9,12 @@ export const PolizasLayout = ({ children, title = ''   }) => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      sx={{  padding: 16}}
+      className='text-font-book-form'
+      sx={{ color: 'primary.main', padding: 15 }}
     >
       <NavBar/>
       <Grid item sx={{ width: { xs:200, sm: 400, md:500, lg:950},}}>
-      <Typography variant='h4' sx={{ mb: 1 }} align='center'>{ title }</Typography>
+      <Typography variant='h4' sx={{ fontFamily:'Gilam Bold'}} align='center'>{ title }</Typography>
             <br />
             <br />
             { children }

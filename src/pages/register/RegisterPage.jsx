@@ -7,15 +7,33 @@ export const RegisterPage = () => {
   return (
     <MenuLayout title="Contratación en línea">
         <form>
-          <Grid container spacing={ 3 } >
+          <Grid container spacing={ 3 } alignItems='center'>
             <Grid  item xs={ 12 } md={3} lg={3}>
-            <label htmlFor="Nombre">Nombre completo: *</label>
+            <label htmlFor="Nombre">Nombre: *</label>
             </Grid>
-            <Grid item xs={ 12 } md={9} lg={9}>
+            <Grid item xs={ 12 } md={9} lg={3}>
               <TextField
-              label="Nombre completo" 
+              label="Nombre" 
                 type="text" 
-                placeholder='Nombre completo' 
+                placeholder='Nombre' 
+                fullWidth
+                size="small"
+              />
+            </Grid>
+            <Grid item xs={ 12 } md={9} lg={3}>
+              <TextField
+              label="Apellido Paterno" 
+                type="text" 
+                placeholder='Apellido Paterno' 
+                fullWidth
+                size="small"
+              />
+            </Grid>
+            <Grid item xs={ 12 } md={9} lg={3}>
+              <TextField
+              label="Apellido Materno" 
+                type="text" 
+                placeholder='Apellido Materno' 
                 fullWidth
                 size="small"
               />
@@ -70,12 +88,12 @@ export const RegisterPage = () => {
             </Grid>
             <Grid container spacing={ 5 } sx={{ mb: 2, mt: 1 }}>
               <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <Button sx={{ backgroundColor: 'secondary.main' }} variant='contained' component={Link} to='/login'>
+                <Button sx={{ backgroundColor: 'secondary.main', fontFamily:'Gilam Regular'  }} variant='contained' component={Link} to='/login'>
                   Cancelar
                 </Button>
               </Grid>
               <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <Button variant='contained' component={Link} to='/code'>
+                <Button  sx={{fontFamily:'Gilam Regular' }} variant='contained' component={Link} to='/code'>
                  Continuar
                 </Button>
               </Grid>

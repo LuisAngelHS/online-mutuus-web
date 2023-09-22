@@ -18,9 +18,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: '#183B91',
     color: theme.palette.common.white,
+    fontFamily:'Gilam Bold'
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
+    fontSize: 15,
+    fontFamily:'Gilam Light',
   },
 }));
 
@@ -67,16 +69,16 @@ export const MembershiPage = () => {
         <Grid item xs={ 12 } md={6} lg={3}>
           <p>Producto: *</p>
         </Grid>
-        <Grid item xs={ 12 } md={6} lg={9}>
+        <Grid item xs={ 12 } md={12} lg={9}>
           <FormControl>
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
             >
-              <FormControlLabel value="female" control={<Radio />} label="UNO" />
-              <FormControlLabel value="male" control={<Radio />} label="DOS" />
-              <FormControlLabel value="other" control={<Radio />} label="CINCO" />
+              <FormControlLabel value="female"  control={<Radio  />} /> <label className="check-member-produc" htmlFor="Uno">Uno</label>
+              <FormControlLabel value="male" control={<Radio />} /> <label className="check-member-produc" htmlFor="Dos">Dos</label>
+              <FormControlLabel value="other" control={<Radio />} /> <label className="check-member-produc" htmlFor="Cinco">Cinco</label>
             </RadioGroup>
           </FormControl>
         </Grid>
@@ -90,9 +92,9 @@ export const MembershiPage = () => {
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
             >
-              <FormControlLabel value="female" control={<Radio />} label="ANUAL" />
-              <FormControlLabel value="male" control={<Radio />} label="12 MSI" />
-              <FormControlLabel value="other" control={<Radio />} label="MENSUAL" />
+              <FormControlLabel value="female" control={<Radio />} /> <label className="check-member-pago" htmlFor="Anual">Anual</label>
+              <FormControlLabel value="male" control={<Radio />} /> <label className="check-member-pago" htmlFor="MSI">12 MSI</label>
+              <FormControlLabel value="other" control={<Radio />}/> <label className="check-member-pago" htmlFor="Mensual">Mensual</label>
             </RadioGroup>
           </FormControl>
         </Grid>
@@ -120,8 +122,8 @@ export const MembershiPage = () => {
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
             >
-              <FormControlLabel value="female" control={<Radio size="small" />} label="Hijo" />
-              <FormControlLabel value="male" control={<Radio size="small" />} label="Otro" />
+              <FormControlLabel value="female" control={<Radio size="small" />}/><label className="check-member-tabla" htmlFor="Hijo">Hijo</label>
+              <FormControlLabel value="male" control={<Radio size="small" />}/><label className="check-member-tabla" htmlFor="Otro">Otro</label>
             </RadioGroup>
           </FormControl>
               </StyledTableCell>
@@ -141,15 +143,15 @@ export const MembershiPage = () => {
 
       <Grid container sx={{ mt: 2 }}>
         <Grid item xs={ 12 } md={8} lg={8} textAlign='end'>
-            <p>Total a pagar: $14,500.00</p>
-            <p>Póliza 1M         $12,000</p>
-            <p>Menor adicional:  $2,000</p>
+            <p className="text-font-book">Total a pagar: $14,500.00</p>
+            <p className="text-font-book">Póliza 1M         $12,000</p>
+            <p className="text-font-book">Menor adicional:  $2,000</p>
         </Grid>
         
       </Grid>
       <Grid container sx={{ mt: 1 }}>
       <Grid item xs={ 12 } md={12} lg={12} textAlign='end'>
-          <Button variant='contained' >
+          <Button sx={{fontFamily:'Gilam Regular' }}  variant='contained' >
             Continuar
           </Button>
         </Grid>
@@ -160,7 +162,7 @@ export const MembershiPage = () => {
 }
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const top100Films = [
-  { label: 'The Shawshank Redemption', year: 1994 },
-  { label: 'The Godfather', year: 1972 },
-  { label: 'The Godfather: Part II', year: 1974 },
+  { label: 'Juan Delgado', year: 1994 },
+  { label: 'Diego Apolonio', year: 1972 },
+  { label: 'Pedro Mendez', year: 1974 },
 ];

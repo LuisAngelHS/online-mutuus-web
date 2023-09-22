@@ -7,11 +7,11 @@ export const PasswordPage = () => {
     <MenuLayout title="Cambio de contraseña">
         <form>
           <Grid container > 
-            <Grid container spacing={ 3 }  sx={{ mb: 2, mt: 2 }} justifyContent='center' alignItems='center'>
+            <Grid container spacing={ 2 }  sx={{ mb: 2, mt: 0}} justifyContent='center' alignItems='center'>
             <Grid  item xs={ 12 } md={4} lg={4}>
             <label htmlFor="Contraseña">Contraseña: *</label>
             </Grid>
-            <Grid item xs={ 12 } md={7} lg={7}>
+            <Grid item xs={ 12 } md={8} lg={6}>
               <TextField 
                 label="Contraseña" 
                 type="password" 
@@ -22,11 +22,11 @@ export const PasswordPage = () => {
             </Grid>
             </Grid>
             
-            <Grid container spacing={ 3 } justifyContent='center' alignItems='center'>
+            <Grid container spacing={ 2 }  sx={{ mb: 2, mt: 0}} justifyContent='center' alignItems='center'>
             <Grid  item xs={ 12 } md={4} lg={4}>
             <label htmlFor="contraseña">Confirmar contraseña: *</label>
             </Grid>
-            <Grid item xs={ 12 } md={7} lg={7}>
+            <Grid item xs={ 12 } md={8} lg={6}>
               <TextField 
                 label="Contraseña" 
                 type="password" 
@@ -37,14 +37,14 @@ export const PasswordPage = () => {
             </Grid>
             </Grid>
 
-            <Grid container spacing={ 4 } sx={{ mb: 2, mt: 5 }} justifyContent='center'>
-            <Grid  item xs={ 12 } md={6} lg={6} textAlign='center'>
-            <Button sx={{ backgroundColor: 'secondary.main' }} variant='contained' component={RouLink} to='/login'>
+            <Grid container spacing={3} sx={{ mb: 2, mt: 3}} justifyContent='center'>
+            <Grid  item xs={ 12 } sm={ 6 } textAlign='center'>
+            <Button sx={{ backgroundColor: 'secondary.main', fontFamily:'Gilam Regular'  }} variant='contained' component={RouLink} to='/login'>
                  Cancelar
                 </Button>
             </Grid>
-              <Grid item xs={ 12 } md={6} lg={6} textAlign='center'>
-                <Button variant='contained' component={RouLink} to='/register'>
+              <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
+                <Button sx={{fontFamily:'Gilam Regular' }} variant='contained' component={RouLink} to='/register'>
                  Continuar
                 </Button>
               </Grid>
