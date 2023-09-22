@@ -16,7 +16,7 @@ export const InformationPage = () => {
             <label htmlFor="Fecha">Fecha de Nacimiento: *</label>
             </Grid>
             <Grid item xs={ 12 } md={3} lg={3} >
-            <TextField label="Fecha" type="number"  size="small"/>
+            <TextField fullWidth  type="date"  size="small"/>
             </Grid>
             
             <Grid item xs={ 12 } md={2} lg={2}>

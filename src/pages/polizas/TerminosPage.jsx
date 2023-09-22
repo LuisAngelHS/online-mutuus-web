@@ -15,7 +15,7 @@ Los términos y condiciones están destinados a proteger a la empresa (a ti). Te
       
         <Grid container spacing={ 5 } sx={{ mt: 5 }}>
         <Grid item xs={ 12 } md={12} lg={12}textAlign='end'>
-                <Button variant='contained' component={RouLink} to='/membershi'>
+                <Button sx={{fontFamily:'Gilam Regular' }} variant='contained' component={RouLink} to='/membershi'>
                  Acepto
                 </Button>
             </Grid>
