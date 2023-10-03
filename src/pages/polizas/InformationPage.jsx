@@ -2,7 +2,7 @@ import { Button, Grid, TextField, Link } from "@mui/material"
 import { PolizasLayout } from "../../layout/PolizasLayout"
 import Checkbox from '@mui/material/Checkbox';
 import { Link as RouLink} from "react-router-dom"
-import InputAdornment from '@mui/material/InputAdornment';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 export const InformationPage = () => {
@@ -39,6 +39,18 @@ export const InformationPage = () => {
             <Grid item xs={ 12 } md={4} lg={4} >
             <TextField label="Estatura" type="number"  size="small"/> 
             </Grid>
+            <Grid item xs={ 12 } md={3} lg={3}>
+            <label htmlFor="Peso">Género: *</label>
+            </Grid>
+            <Grid item xs={ 12 } md={3} lg={3}>
+        <Autocomplete
+          disablePortal
+          size="small"
+          id="combo-box-demo"
+          options={top100Films}
+          renderInput={(params) => <TextField {...params} label="Género" />}
+        />
+        </Grid>
         </Grid>
 
         <Grid container sx={{ mt: 8 }} justifyContent='center'>
@@ -59,4 +71,10 @@ export const InformationPage = () => {
         </Grid>        
     </PolizasLayout>
   )
+  
 }
+// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
+const top100Films = [
+  { label: 'Masculino' },
+  { label: 'Femenino' }
+];

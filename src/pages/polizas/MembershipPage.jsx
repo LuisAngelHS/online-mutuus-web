@@ -13,6 +13,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Link as RouLink} from "react-router-dom"
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -151,7 +152,7 @@ export const MembershiPage = () => {
       </Grid>
       <Grid container sx={{ mt: 1 }}>
       <Grid item xs={ 12 } md={12} lg={12} textAlign='end'>
-          <Button sx={{fontFamily:'Gilam Regular' }}  variant='contained' >
+          <Button sx={{fontFamily:'Gilam Regular' }}  variant='contained'>
             Continuar
           </Button>
         </Grid>

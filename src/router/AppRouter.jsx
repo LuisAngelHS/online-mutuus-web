@@ -2,6 +2,7 @@ import {Routes, Route} from "react-router-dom"
 import {AuthRoutes} from '../auth/routes/AuthRoutes';
 import {RegisterPage, CodePage, LoginPage, PasswordPage} from '../pages/register';
 import {InformationPage, TerminosPage, MembershiPage} from '../pages/polizas';
+import {PaymentsPage} from '../pages/Pagos';
 
 export const AppRouter = () => {
   return (
@@ -13,6 +14,7 @@ export const AppRouter = () => {
       <Route path="/information" element={<InformationPage/>}/>
       <Route path="/terms" element={<TerminosPage/>}/>
       <Route path="/membershi" element={<MembershiPage/>}/>
+      <Route path="/payments" element={<PaymentsPage/>}/>
         {/* Login y Registro*/}
         <Route path="/auth/*" element={<AuthRoutes/>}/>
     </Routes> 
