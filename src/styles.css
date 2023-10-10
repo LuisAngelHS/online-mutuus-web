@@ -8,6 +8,17 @@
 .box-shadow {
   box-shadow: 100px 55px 50px rgba(0, 0, 0, 0.2);
 }
+body {
+  background: url(./assets/img/mutuus1.png) center;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 15px;
+}
+
+
 .button-secund{
   width: 150px;
   height: 40px;
