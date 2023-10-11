@@ -10,9 +10,9 @@ export const PolizasLayout = ({ children, title = ''   }) => {
       alignItems="center"
       justifyContent="center"
       className='text-font-book-form'
-      sx={{ color: 'primary.main', padding: 15 }}
+      sx={{ color: '#fff', padding: 15,}}
     >
-      <NavBar/>
+      {/* <NavBar/> */}
       <Grid item sx={{ width: { xs:200, sm: 400, md:500, lg:950},}}>
       <Typography variant='h4' sx={{ fontFamily:'Gilam Bold'}} align='center'>{ title }</Typography>
             <br />

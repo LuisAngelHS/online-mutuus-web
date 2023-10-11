@@ -15,9 +15,41 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link as RouLink} from "react-router-dom"
 
+const CssTextField = styled(TextField)({
+  //Cuando el input tenga el focus.....
+  '& label.Mui-focused': {
+    color: '#AED43A',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'red',
+  },
+
+  //Color inicial del border del input....
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'white',
+      borderRadius: 15,
+    },
+    
+  //Color del borde al pasar el mouse por encima...  
+    '&:hover fieldset': {
+      borderColor: '#AED43A',
+    },
+
+  //Color del borde al hacer click en el input...  
+    '&.Mui-focused fieldset': {
+      borderColor: '#AED43A',
+    },
+
+    // '&.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root':{
+    //   color: 'white'
+    // },
+  },
+});
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#183B91',
+    backgroundColor: '#AED43A',
     color: theme.palette.common.white,
     fontFamily:'Gilam Bold'
   },
@@ -55,15 +87,16 @@ export const MembershiPage = () => {
           <p>Clave del agente: </p>
         </Grid>
         <Grid item xs={ 12 } md={2} lg={2}>
-          <TextField type="text" fullWidth size="small"/>
+          <CssTextField sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }}  type="text" fullWidth size="small"/>
         </Grid>
         <Grid item xs={ 12 } md={6} lg={7}>
         <Autocomplete
           disablePortal
+          sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }} 
           size="small"
           id="combo-box-demo"
           options={top100Films}
-          renderInput={(params) => <TextField {...params} label="Nombre" />}
+          renderInput={(params) => <CssTextField {...params}   InputLabelProps={{style:{color: 'white', fontFamily:'Gilam Book'}}}  label="Nombre" />}
         />
         </Grid>
 
@@ -152,7 +185,7 @@ export const MembershiPage = () => {
       </Grid>
       <Grid container sx={{ mt: 1 }}>
       <Grid item xs={ 12 } md={12} lg={12} textAlign='end'>
-          <Button sx={{fontFamily:'Gilam Regular' }}  variant='contained'>
+          <Button sx={{backgroundColor: 'secondary.main',fontFamily:'Gilam Regular' }}  variant='contained'>
             Continuar
           </Button>
         </Grid>

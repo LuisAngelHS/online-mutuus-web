@@ -1,9 +1,24 @@
 import { Button, Grid,TextField, Typography } from '@mui/material';
 import { Google } from '@mui/icons-material';
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import * as React from 'react';
 import { MenuLayout } from "../../layout/MenuLayout"
 import { Link } from "react-router-dom"
 
 export const RegisterPage = () => {
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   return (
     <MenuLayout title="Contratación en línea">
         <form>
@@ -11,7 +26,7 @@ export const RegisterPage = () => {
             <Grid  item xs={ 12 } md={3} lg={3}>
             <label htmlFor="Nombre">Nombre: *</label>
             </Grid>
-            <Grid item xs={ 12 } md={9} lg={3}>
+            <Grid item xs={ 12 } md={9} lg={9}>
               <TextField
               label="Nombre" 
                 type="text" 
@@ -20,7 +35,7 @@ export const RegisterPage = () => {
                 size="small"
               />
             </Grid>
-            <Grid item xs={ 12 } md={9} lg={3}>
+            {/* <Grid item xs={ 12 } md={9} lg={3}>
               <TextField
               label="Apellido Paterno" 
                 type="text" 
@@ -37,11 +52,11 @@ export const RegisterPage = () => {
                 fullWidth
                 size="small"
               />
-            </Grid>
+            </Grid> */}
             <Grid  item xs={ 12 } md={3} lg={3}>
             <label htmlFor="Correo">Correo electrónico: *</label>
             </Grid>
-            <Grid item xs={ 12 } md={9} lg={9}>
+            <Grid item xs={ 12 } md={9} lg={9} className='format-in'>
               <TextField 
                 label="Correo" 
                 type="email" 
@@ -54,25 +69,51 @@ export const RegisterPage = () => {
             <label htmlFor="Contraseña">Contraseña: *</label>
             </Grid>
             <Grid item xs={ 12 } md={9} lg={9}>
-              <TextField 
-                label="Contraseña" 
-                type="password" 
-                placeholder='Contraseña' 
-                fullWidth
-                size="small"
-              />
+            <FormControl variant="outlined" size="small" fullWidth>
+          <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Contraseña"
+          />
+        </FormControl>
             </Grid>
             <Grid  item xs={ 12 } md={3} lg={3}>
             <label htmlFor="Contraseña">Confirmar Contraseña: </label>
             </Grid>
             <Grid item xs={ 12 } md={9} lg={9}>
-              <TextField 
-                label="Contraseña" 
-                type="password" 
-                placeholder='Contraseña' 
-                fullWidth
-                size="small"
-              />
+            <FormControl variant="outlined" size="small" fullWidth>
+          <InputLabel htmlFor="outlined-adornment-password">Confirmar Contraseña</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Confirmar Contraseña"
+          />
+        </FormControl>
             </Grid>
             <Grid  item xs={ 12 } md={3} lg={3}>
             <label htmlFor="celular">Número celular: * </label>
