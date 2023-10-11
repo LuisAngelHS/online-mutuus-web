@@ -9,13 +9,13 @@ const CssTextField = styled(TextField)({
     color: '#AED43A',
   },
   '& .MuiInput-underline:after': {
-    borderBottomColor: 'red',
+    borderBottomColor: '#183B91',
   },
 
   //Color inicial del border del input....
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: 'white',
+      borderColor: '#183B91',
       borderRadius: 15,
     },
     
@@ -45,18 +45,18 @@ export const CodePage = () => {
         </Grid>
         <Grid container sx={{ mt: 10 }}>
             <Grid  item xs={ 6 } md={3} lg={3}  textAlign='center'>
-            <CssTextField className="input-code" sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }}/>
+            <CssTextField className="input-code"  sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}/>
             </Grid>
-            <Grid  item xs={ 6 } md={3} lg={3}  sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }} textAlign='center'>
+            <Grid  item xs={ 6 } md={3} lg={3}  sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }} textAlign='center'>
             <CssTextField className="input-code"/>
             </Grid>
-            <Grid  item xs={ 6 } md={3} lg={3}  sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }} textAlign='center'>
+            <Grid  item xs={ 6 } md={3} lg={3} sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }} textAlign='center'>
             <CssTextField className="input-code"/>
             </Grid>
-            <Grid  item xs={ 6} md={3} lg={3}  sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }} textAlign='center'>
+            <Grid  item xs={ 6} md={3} lg={3}  sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }} textAlign='center'>
             <CssTextField className="input-code"/>
             </Grid>
-            <Grid item xs={ 12} md={12} lg={12}  sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }} textAlign='center' sx={{ mt: 3, color: 'error.main' }} >
+            <Grid item xs={ 12} md={12} lg={12} sx={{ mt: 3, color: 'error.main' }} textAlign='center' >
             <p className="text-font-book">Código incorrector favor de Verificar.</p>
             </Grid>
             
@@ -64,12 +64,12 @@ export const CodePage = () => {
        
         <Grid container spacing={ 5 } sx={{ mb: 2, mt: 5 }}>
             <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <Button sx={{ backgroundColor: '#444343', fontFamily:'Gilam Regular' }} variant='contained' >
+                <Button sx={{ backgroundColor: 'secondary.main', fontFamily:'Gilam Regular' }} variant='contained' >
                   Reenviar código
                 </Button>
             </Grid>
               <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <Button sx={{ backgroundColor: 'secondary.main', fontFamily:'Gilam Regular' }} variant='contained' component={Link} to='/information'>
+                <Button sx={{fontFamily:'Gilam Regular' }} variant='contained' component={Link} to='/information'>
                  Continuar
                 </Button>
             </Grid>

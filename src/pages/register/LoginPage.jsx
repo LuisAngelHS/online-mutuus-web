@@ -7,8 +7,41 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { styled } from '@mui/material/styles';
 import * as React from 'react';
 import { Link as RouLink} from "react-router-dom"
+
+const CssTextField = styled(TextField)({
+  //Cuando el input tenga el focus.....
+  '& label.Mui-focused': {
+    color: '#AED43A',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: '#183B91',
+  },
+
+  //Color inicial del border del input....
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#183B91',
+      borderRadius: 15,
+    },
+    
+  //Color del borde al pasar el mouse por encima...  
+    '&:hover fieldset': {
+      borderColor: '#AED43A',
+    },
+
+  //Color del borde al hacer click en el input...  
+    '&.Mui-focused fieldset': {
+      borderColor: '#AED43A',
+    },
+
+    // '&.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root':{
+    //   color: 'white'
+    // },
+  },
+});
 
 export const LoginPage = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -21,18 +54,29 @@ export const LoginPage = () => {
   return (
     <MenuLayout title="Contratación en línea">
        <form>
-        <Grid container>
-          <Grid item xs={ 12 } sx={{ mt: 2 }}>
-            <TextField 
+        <Grid container justifyContent='center'>
+          <Grid item xs={ 12 } md={7} lg={7} sx={{ mt: 2 }} > 
+            <CssTextField 
               label="Correo" 
               type="email" 
               placeholder='correo@google.com' 
+              sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+              InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
               fullWidth
             />
           </Grid>
-
-          <Grid item xs={ 12 } sx={{ mt: 2 }}>
-          <FormControl variant="outlined" fullWidth>
+          </Grid>
+          <Grid container justifyContent='center'>
+          <Grid item xs={ 12 } md={7} lg={7} sx={{ mt: 2 }}>
+          <CssTextField 
+              label="Contraseña" 
+              type="password" 
+              placeholder='correo@google.com' 
+              sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+              InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
+              fullWidth
+            />
+          {/* <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -51,21 +95,13 @@ export const LoginPage = () => {
             }
             label="Password"
           />
-        </FormControl>
-
-
-
-
-            {/* <TextField 
-              label="Contraseña" 
-              type="password" 
-              placeholder='Contraseña' 
-              fullWidth
-            /> */}
+        </FormControl> */}
           </Grid>
+          </Grid>
+      
           
-          <Grid container spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
-            <Grid item xs={ 12 } sm={ 12 }>
+          <Grid container justifyContent='center' spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
+            <Grid item xs={ 12 } md={7} lg={7}>
               <Button variant='contained' fullWidth component={RouLink} to='/register'>
                 Continuar
               </Button>
@@ -77,12 +113,14 @@ export const LoginPage = () => {
             </Grid> */}
           </Grid>
 
-
-          <Grid container direction='row' justifyContent='end'>
-          <Link sx={{ mt: 1, fontSize:15, fontFamily:'Gilam Book' }} component={RouLink} to='/password'>Olvide mi contraseña.</Link>
+          <Grid container justifyContent='center'>
+          <Grid item xs={ 12 } md={7} lg={7} justifyContent='center'>
+          <Link sx={{ mt: 1, fontSize:15, fontFamily:'Gilam Book', color:'#AED43A' }} component={RouLink} to='/password'>Olvide mi contraseña.</Link>
           </Grid>
+          </Grid>
+          
 
-        </Grid>
+       
 
 
       </form>

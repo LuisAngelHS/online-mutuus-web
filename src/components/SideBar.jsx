@@ -23,35 +23,8 @@ export const SideBar = ({ drawerWidth = 200 }) => {
                 marginLeft:2,
                 marginTop:50
             }}>
-<img src={images} width="150" height="130"/>
+                <img src={images} width="150" height="130"/>
             </Grid>
-
-          
-            {/* <Toolbar>
-                <Typography variant='h6' noWrap component='div'>
-                    Mutuus
-                </Typography>
-            </Toolbar>
-            <Divider /> */}
-
-            {/* <List>
-                {
-                    ['Enero','Febrero','Marzo','Abril'].map( text => (
-                        <ListItem key={ text } disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <TurnedInNot />
-                                </ListItemIcon>
-                                <Grid container>
-                                    <ListItemText primary={ text } />
-                                    <ListItemText secondary={ 'Exercitation cillum irure elit consectetur.' } />
-                                </Grid>
-                            </ListItemButton>
-                        </ListItem>
-                    ))
-                }
-            </List> */}
-
         </Drawer>
 
     </Box>

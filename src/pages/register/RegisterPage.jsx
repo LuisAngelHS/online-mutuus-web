@@ -8,8 +8,41 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import * as React from 'react';
+import { styled } from '@mui/material/styles';
 import { MenuLayout } from "../../layout/MenuLayout"
 import { Link } from "react-router-dom"
+
+const CssTextField = styled(TextField)({
+  //Cuando el input tenga el focus.....
+  '& label.Mui-focused': {
+    color: '#AED43A',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: '#183B91',
+  },
+
+  //Color inicial del border del input....
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#183B91',
+      borderRadius: 15,
+    },
+    
+  //Color del borde al pasar el mouse por encima...  
+    '&:hover fieldset': {
+      borderColor: '#AED43A',
+    },
+
+  //Color del borde al hacer click en el input...  
+    '&.Mui-focused fieldset': {
+      borderColor: '#AED43A',
+    },
+
+    // '&.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root':{
+    //   color: 'white'
+    // },
+  },
+});
 
 export const RegisterPage = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -22,17 +55,19 @@ export const RegisterPage = () => {
   return (
     <MenuLayout title="Contratación en línea">
         <form>
-          <Grid container spacing={ 3 } alignItems='center'>
-            <Grid  item xs={ 12 } md={3} lg={3}>
+          <Grid container spacing={ 3 } alignItems='center' justifyContent='center'>
+            <Grid  item xs={ 12 } md={3} lg={3} justifyContent='center'>
             <label htmlFor="Nombre">Nombre: *</label>
             </Grid>
-            <Grid item xs={ 12 } md={9} lg={9}>
-              <TextField
+            <Grid item xs={ 12 } md={9} lg={7}>
+              <CssTextField
               label="Nombre" 
                 type="text" 
                 placeholder='Nombre' 
                 fullWidth
                 size="small"
+                sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
               />
             </Grid>
             {/* <Grid item xs={ 12 } md={9} lg={3}>
@@ -56,20 +91,31 @@ export const RegisterPage = () => {
             <Grid  item xs={ 12 } md={3} lg={3}>
             <label htmlFor="Correo">Correo electrónico: *</label>
             </Grid>
-            <Grid item xs={ 12 } md={9} lg={9} className='format-in'>
-              <TextField 
+            <Grid item xs={ 12 } md={9} lg={7} className='format-in'>
+              <CssTextField 
                 label="Correo" 
                 type="email" 
                 placeholder='correo@google.com' 
                 fullWidth
                 size="small"
+                sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
               />
             </Grid>
             <Grid  item xs={ 12 } md={3} lg={3}>
             <label htmlFor="Contraseña">Contraseña: *</label>
             </Grid>
-            <Grid item xs={ 12 } md={9} lg={9}>
-            <FormControl variant="outlined" size="small" fullWidth>
+            <Grid item xs={ 12 } md={9} lg={7}>
+            <CssTextField
+              label="Contraseña" 
+                type="password" 
+                placeholder='Contraseña' 
+                fullWidth
+                size="small"
+                sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
+              />
+            {/* <FormControl variant="outlined" size="small" fullWidth>
           <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -88,13 +134,22 @@ export const RegisterPage = () => {
             }
             label="Contraseña"
           />
-        </FormControl>
+        </FormControl> */}
             </Grid>
             <Grid  item xs={ 12 } md={3} lg={3}>
             <label htmlFor="Contraseña">Confirmar Contraseña: </label>
             </Grid>
-            <Grid item xs={ 12 } md={9} lg={9}>
-            <FormControl variant="outlined" size="small" fullWidth>
+            <Grid item xs={ 12 } md={9} lg={7}>
+            <CssTextField
+              label="Confirmar Contraseña" 
+                type="password" 
+                placeholder='Confirmar Contraseña' 
+                fullWidth
+                size="small"
+                sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
+              />
+            {/* <FormControl variant="outlined" size="small" fullWidth>
           <InputLabel htmlFor="outlined-adornment-password">Confirmar Contraseña</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -113,18 +168,20 @@ export const RegisterPage = () => {
             }
             label="Confirmar Contraseña"
           />
-        </FormControl>
+        </FormControl> */}
             </Grid>
             <Grid  item xs={ 12 } md={3} lg={3}>
             <label htmlFor="celular">Número celular: * </label>
             </Grid>
-            <Grid  item xs={ 12 } md={9} lg={9}>
-              <TextField 
+            <Grid  item xs={ 12 } md={9} lg={7}>
+              <CssTextField 
                 label="Número celular" 
                 type="number" 
                 placeholder='5556968596' 
                 fullWidth
                 size="small"
+                sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
               />
             </Grid>
             <Grid container spacing={ 5 } sx={{ mb: 2, mt: 1 }}>

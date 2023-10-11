@@ -11,13 +11,13 @@ const CssTextField = styled(TextField)({
     color: '#AED43A',
   },
   '& .MuiInput-underline:after': {
-    borderBottomColor: 'red',
+    borderBottomColor: '#183B91',
   },
 
   //Color inicial del border del input....
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: 'white',
+      borderColor: '#183B91',
       borderRadius: 15,
     },
     
@@ -49,28 +49,32 @@ export const InformationPage = () => {
             <label htmlFor="Fecha">Fecha de Nacimiento: *</label>
             </Grid>
             <Grid item xs={ 12 } md={3} lg={3} >
-            <CssTextField fullWidth  type="date" sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }} size="small" />
+            <CssTextField fullWidth  type="date" sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                size="small" />
             </Grid>
             
             <Grid item xs={ 12 } md={2} lg={2}>
             <label htmlFor="RFC">RFC: *</label>
             </Grid>
             <Grid item xs={ 12 } md={4} lg={4} >
-            <CssTextField  label="Rfc" type="text" InputLabelProps={{style:{color: 'white', fontFamily:'Gilam Book'}}} sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }}  size="small"/>
+            <CssTextField  label="Rfc" type="text" sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}} size="small"/>
             </Grid>
 
             <Grid item xs={ 12 } md={3} lg={3}>
             <label htmlFor="Peso">Peso(Kg.): *</label>
             </Grid>
             <Grid item xs={ 12 } md={3} lg={3} >
-            <CssTextField fullWidth label="Peso"  type="number" InputLabelProps={{style:{color: 'white', fontFamily:'Gilam Book'}}} sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }} size="small"/> 
+            <CssTextField fullWidth label="Peso"  type="number" sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}} size="small"/> 
             </Grid>
 
             <Grid item xs={ 12 } md={2} lg={2}>
             <label htmlFor="Estatura">Estatura (M): *</label>
             </Grid>
             <Grid item xs={ 12 } md={4} lg={4} >
-            <CssTextField label="Estatura" type="number" InputLabelProps={{style:{color: 'white', fontFamily:'Gilam Book'}}} sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }}   size="small"/> 
+            <CssTextField label="Estatura" type="number" sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}   size="small"/> 
             </Grid>
             <Grid item xs={ 12 } md={3} lg={3}>
             <label htmlFor="Peso">Género: *</label>
@@ -78,18 +82,18 @@ export const InformationPage = () => {
             <Grid item xs={ 12 } md={3} lg={3}>
         <Autocomplete
           disablePortal
-          sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }}
+          sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
           size="small"
           id="combo-box-demo"
           options={top100Films}
-          renderInput={(params) => <CssTextField {...params} label="Género" InputLabelProps={{style:{color: 'white', fontFamily:'Gilam Book'}}} />}
+          renderInput={(params) => <CssTextField {...params} label="Género" InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}} />}
         />
         </Grid>
         </Grid>
 
         <Grid container sx={{ mt: 8 }} justifyContent='center'>
             <Checkbox {...label} />
-            <Link sx={{ mt: 1, fontSize:15, fontFamily:'Gilam Book', color:'white' }} component={RouLink} to='/terms'>Acepto los terminos y condiciones</Link>
+            <Link sx={{ mt: 1, fontSize:15, fontFamily:'Gilam Book'}} component={RouLink} to='/terms'>Acepto los terminos y condiciones</Link>
             <Grid item xs={ 12} md={12} lg={12}  textAlign='center' sx={{ mt: 3, color: 'error.main' }} >
             <p className="text-font-book">Es necesario que acepte los términos y condiciones para continuar.</p>
             </Grid>
@@ -98,7 +102,7 @@ export const InformationPage = () => {
        
         <Grid container spacing={ 5 } sx={{ mt: 5 }}>
         <Grid item xs={ 12 } md={12} lg={11}textAlign='end'>
-                <Button sx={{ backgroundColor: 'secondary.main', fontFamily:'Gilam Regular' }} variant='contained' component={RouLink}  to='/membershi'>
+                <Button sx={{ fontFamily:'Gilam Regular' }} variant='contained' component={RouLink}  to='/membershi'>
                  Continuar
                 </Button>
             </Grid>

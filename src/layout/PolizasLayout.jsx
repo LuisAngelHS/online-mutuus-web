@@ -1,6 +1,7 @@
 import {  Grid, Typography } from '@mui/material';
-import { NavBar } from '../components';
+import { SideBar } from '../components';
 
+const drawerWidth = 200;
 export const PolizasLayout = ({ children, title = ''   }) => {
   return (
     <Grid
@@ -10,11 +11,12 @@ export const PolizasLayout = ({ children, title = ''   }) => {
       alignItems="center"
       justifyContent="center"
       className='text-font-book-form'
-      sx={{ color: '#fff', padding: 15,}}
+      sx={{ color: 'primary.main', padding: 15,}}
     >
+      <SideBar drawerWidth={ drawerWidth } />
       {/* <NavBar/> */}
       <Grid item sx={{ width: { xs:200, sm: 400, md:500, lg:950},}}>
-      <Typography variant='h4' sx={{ fontFamily:'Gilam Bold'}} align='center'>{ title }</Typography>
+      <Typography variant='h5' sx={{ fontFamily:'Gilam Bold'}} align='center'>{ title }</Typography>
             <br />
             <br />
             { children }

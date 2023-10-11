@@ -21,13 +21,13 @@ const CssTextField = styled(TextField)({
     color: '#AED43A',
   },
   '& .MuiInput-underline:after': {
-    borderBottomColor: 'red',
+    borderBottomColor: '#183B91',
   },
 
   //Color inicial del border del input....
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: 'white',
+      borderColor: '#183B91',
       borderRadius: 15,
     },
     
@@ -49,8 +49,8 @@ const CssTextField = styled(TextField)({
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#AED43A',
-    color: theme.palette.common.white,
+    backgroundColor: '#183B91',
+    color: '#AED43A',
     fontFamily:'Gilam Bold'
   },
   [`&.${tableCellClasses.body}`]: {
@@ -87,16 +87,18 @@ export const MembershiPage = () => {
           <p>Clave del agente: </p>
         </Grid>
         <Grid item xs={ 12 } md={2} lg={2}>
-          <CssTextField sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }}  type="text" fullWidth size="small"/>
+          <CssTextField label="Agente" sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}   type="text" fullWidth size="small"/>
         </Grid>
         <Grid item xs={ 12 } md={6} lg={7}>
         <Autocomplete
           disablePortal
-          sx={{ input: { color: 'white', fontFamily:'Gilam Book' } }} 
+          sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                
           size="small"
           id="combo-box-demo"
           options={top100Films}
-          renderInput={(params) => <CssTextField {...params}   InputLabelProps={{style:{color: 'white', fontFamily:'Gilam Book'}}}  label="Nombre" />}
+          renderInput={(params) => <CssTextField {...params}   InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}  label="Nombre" />}
         />
         </Grid>
 
@@ -185,7 +187,7 @@ export const MembershiPage = () => {
       </Grid>
       <Grid container sx={{ mt: 1 }}>
       <Grid item xs={ 12 } md={12} lg={12} textAlign='end'>
-          <Button sx={{backgroundColor: 'secondary.main',fontFamily:'Gilam Regular' }}  variant='contained'>
+          <Button sx={{fontFamily:'Gilam Regular' }}  variant='contained'>
             Continuar
           </Button>
         </Grid>
