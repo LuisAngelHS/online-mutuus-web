@@ -23,7 +23,7 @@ const CssTextField = styled(TextField)({
   //Color inicial del border del input....
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: '#183B91',
+      borderColor: '#FFF',
       borderRadius: 15,
     },
     
@@ -60,8 +60,8 @@ export const LoginPage = () => {
               label="Correo" 
               type="email" 
               placeholder='correo@google.com' 
-              sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
-              InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
+              sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}
+              InputLabelProps={{style:{color: '#FFF', fontFamily:'Gilam Book'}}}
               fullWidth
             />
           </Grid>
@@ -72,8 +72,8 @@ export const LoginPage = () => {
               label="Contraseña" 
               type="password" 
               placeholder='correo@google.com' 
-              sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
-              InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
+              sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}
+              InputLabelProps={{style:{color: '#FFF', fontFamily:'Gilam Book'}}}
               fullWidth
             />
           {/* <FormControl variant="outlined" fullWidth>
@@ -102,7 +102,7 @@ export const LoginPage = () => {
           
           <Grid container justifyContent='center' spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
             <Grid item xs={ 12 } md={7} lg={7}>
-              <Button variant='contained' fullWidth component={RouLink} to='/register'>
+              <Button variant='contained' sx={{ backgroundColor:'#AED43A', color:'#fff' }} fullWidth component={RouLink} to='/register'>
                 Continuar
               </Button>
             </Grid>

@@ -24,7 +24,7 @@ const CssTextField = styled(TextField)({
   //Color inicial del border del input....
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: '#183B91',
+      borderColor: '#FFF',
       borderRadius: 15,
     },
     
@@ -66,8 +66,8 @@ export const RegisterPage = () => {
                 placeholder='Nombre' 
                 fullWidth
                 size="small"
-                sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
-                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
+                sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#FFF', fontFamily:'Gilam Book'}}}
               />
             </Grid>
             {/* <Grid item xs={ 12 } md={9} lg={3}>
@@ -98,8 +98,8 @@ export const RegisterPage = () => {
                 placeholder='correo@google.com' 
                 fullWidth
                 size="small"
-                sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
-                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
+                sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#FFF', fontFamily:'Gilam Book'}}}
               />
             </Grid>
             <Grid  item xs={ 12 } md={3} lg={3}>
@@ -112,8 +112,8 @@ export const RegisterPage = () => {
                 placeholder='Contraseña' 
                 fullWidth
                 size="small"
-                sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
-                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
+                sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#FFF', fontFamily:'Gilam Book'}}}
               />
             {/* <FormControl variant="outlined" size="small" fullWidth>
           <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
@@ -146,8 +146,8 @@ export const RegisterPage = () => {
                 placeholder='Confirmar Contraseña' 
                 fullWidth
                 size="small"
-                sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
-                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
+                sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#FFF', fontFamily:'Gilam Book'}}}
               />
             {/* <FormControl variant="outlined" size="small" fullWidth>
           <InputLabel htmlFor="outlined-adornment-password">Confirmar Contraseña</InputLabel>
@@ -180,8 +180,8 @@ export const RegisterPage = () => {
                 placeholder='5556968596' 
                 fullWidth
                 size="small"
-                sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
-                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
+                sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#FFF', fontFamily:'Gilam Book'}}}
               />
             </Grid>
             <Grid container spacing={ 5 } sx={{ mb: 2, mt: 1 }}>

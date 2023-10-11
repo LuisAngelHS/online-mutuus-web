@@ -17,7 +17,7 @@ export const MenuLayout = ({ children, title = ''  }) => {
       className='text-font-book-form'
       sx={{ color: 'primary.main', padding: 30}}
     >
-       <SideBar drawerWidth={ drawerWidth } />
+       {/* <SideBar drawerWidth={ drawerWidth } /> */}
       {/* <NavBar/> */}
       {/* <Grid item sx={{ width: { xs:200, sm: 400, md:500, lg:750},}}>
           <Typography variant='h4' sx={{ fontFamily:'Gilam Bold'}} align='center'>{ title }</Typography>
