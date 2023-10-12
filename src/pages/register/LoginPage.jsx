@@ -52,10 +52,10 @@ export const LoginPage = () => {
     event.preventDefault();
   };
   return (
-    <MenuLayout title="Contratación en línea">
+    <MenuLayout title="">
        <form>
         <Grid container justifyContent='center'>
-          <Grid item xs={ 12 } md={7} lg={7} sx={{ mt: 2 }} > 
+          <Grid item xs={12} md={8} lg={7} sx={{ mt: 2 }} > 
             <CssTextField 
               label="Correo" 
               type="email" 
@@ -67,7 +67,7 @@ export const LoginPage = () => {
           </Grid>
           </Grid>
           <Grid container justifyContent='center'>
-          <Grid item xs={ 12 } md={7} lg={7} sx={{ mt: 2 }}>
+          <Grid item xs={12} md={8} lg={7} sx={{ mt: 2 }}>
           <CssTextField 
               label="Contraseña" 
               type="password" 
@@ -101,7 +101,7 @@ export const LoginPage = () => {
       
           
           <Grid container justifyContent='center' spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
-            <Grid item xs={ 12 } md={7} lg={7}>
+            <Grid item xs={12} md={8} lg={7}>
               <Button variant='contained' sx={{ backgroundColor:'#AED43A', color:'#fff' }} fullWidth component={RouLink} to='/register'>
                 Continuar
               </Button>
@@ -114,7 +114,7 @@ export const LoginPage = () => {
           </Grid>
 
           <Grid container justifyContent='center'>
-          <Grid item xs={ 12 } md={7} lg={7} justifyContent='center'>
+          <Grid item xs={12} md={8} lg={7} justifyContent='center'>
           <Link sx={{ mt: 1, fontSize:15, fontFamily:'Gilam Book', color:'#AED43A' }} component={RouLink} to='/password'>Olvide mi contraseña.</Link>
           </Grid>
           </Grid>

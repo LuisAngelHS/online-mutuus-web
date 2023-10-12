@@ -8,6 +8,7 @@ export const NavBar = () => {
   return (
     <AppBar 
         position='fixed'
+        sx={{backgroundColor: '#183B91' }} 
     >
         <Toolbar>
             <Grid component={RouLink} to='/login' container direction='row' justifyContent='space-between' alignItems='center'>

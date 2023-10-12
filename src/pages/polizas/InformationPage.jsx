@@ -91,7 +91,7 @@ export const InformationPage = () => {
         </Grid>
         </Grid>
 
-        <Grid container sx={{ mt: 8 }} justifyContent='center'>
+        <Grid container sx={{ mt: 4 }} justifyContent='center'>
             <Checkbox {...label} />
             <Link sx={{ mt: 1, fontSize:15, fontFamily:'Gilam Book'}} component={RouLink} to='/terms'>Acepto los terminos y condiciones</Link>
             <Grid item xs={ 12} md={12} lg={12}  textAlign='center' sx={{ mt: 3, color: 'error.main' }} >
@@ -100,7 +100,7 @@ export const InformationPage = () => {
         </Grid>
       
        
-        <Grid container spacing={ 5 } sx={{ mt: 5 }}>
+        <Grid container spacing={ 4 } sx={{ mt: 2 }}>
         <Grid item xs={ 12 } md={12} lg={11}textAlign='end'>
                 <Button sx={{ fontFamily:'Gilam Regular' }} variant='contained' component={RouLink}  to='/membershi'>
                  Continuar

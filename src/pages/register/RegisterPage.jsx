@@ -53,7 +53,7 @@ export const RegisterPage = () => {
     event.preventDefault();
   };
   return (
-    <MenuLayout title="Contratación en línea">
+    <MenuLayout title="">
         <form>
           <Grid container spacing={ 3 } alignItems='center' justifyContent='center'>
             <Grid  item xs={ 12 } md={3} lg={3} justifyContent='center'>

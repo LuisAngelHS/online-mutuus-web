@@ -53,7 +53,7 @@ export const PasswordPage = () => {
   };
 
   return (
-    <MenuLayout title="Cambio de contraseña">
+    <MenuLayout title="">
         <form>
           <Grid container > 
             <Grid container spacing={ 2 }  sx={{ mb: 2, mt: 0}} justifyContent='center' alignItems='center'>
