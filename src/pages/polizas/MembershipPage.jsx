@@ -46,9 +46,33 @@ const CssTextField = styled(TextField)({
     // },
   },
 });
+const PasswordButton = styled(Button)({
+  textTransform: 'none',
+  fontSize: 20,
+  lineHeight: 1.5,
+  backgroundColor: '#AED43A',
+  color: '#fff',
+  fontFamily: 'Gilam Bold',
+  borderRadius:12,
+  '&:hover': {
+    backgroundColor: '#fff',
+    borderColor: '#0062cc',
+    boxShadow: 'none',
+    color:'#AED43A'
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: '#0062cc',
+    borderColor: '#005cbf',
+  },
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+  },
+});
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
+    fontSize: 17,
     backgroundColor: '#AED43A',
     color: '#183B91',
     fontFamily:'Gilam Bold'
@@ -61,8 +85,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-
+    backgroundColor: '#fff',
   },
   // hide last border
   '&:last-child td, &:last-child th': {
@@ -76,7 +99,7 @@ function createData(parentes, name, estatura, peso, curp) {
 
 const rows = [
   createData('', 'Jorge Garcia Perez', 1.15, 20, 'JJJS98524178745'),
-  createData('', 'Pancracio Lopez Perez', 1.15, 20, 'JJJS98524178745')
+  createData('', 'Pedro Lopez Perez', 1.15, 20, 'JJJS98524178745')
 
 ];
 export const MembershiPage = () => {
@@ -159,8 +182,8 @@ export const MembershiPage = () => {
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
             >
-              <FormControlLabel value="female" control={<Radio size="small" />}/><label className="check-member-tabla" htmlFor="Hijo">Hijo</label>
-              <FormControlLabel value="male" control={<Radio size="small" />}/><label className="check-member-tabla" htmlFor="Otro">Otro</label>
+              <FormControlLabel value="female" control={<Radio size="small" color="success" />}/><label className="check-member-tabla" htmlFor="Hijo">Hijo</label>
+              <FormControlLabel value="male" control={<Radio size="small" color="success" />}/><label className="check-member-tabla" htmlFor="Otro">Otro</label>
             </RadioGroup>
           </FormControl>
               </StyledTableCell>
@@ -188,9 +211,9 @@ export const MembershiPage = () => {
       </Grid>
       <Grid container sx={{ mt: 1 }}>
       <Grid item xs={ 12 } md={12} lg={12} textAlign='end'>
-          <Button sx={{fontFamily:'Gilam Regular' }}  variant='contained'>
+          <PasswordButton sx={{fontFamily:'Gilam Regular' }}  variant='contained'>
             Continuar
-          </Button>
+          </PasswordButton>
         </Grid>
       </Grid> 
             

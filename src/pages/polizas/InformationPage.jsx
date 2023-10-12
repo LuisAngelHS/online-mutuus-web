@@ -37,6 +37,30 @@ const CssTextField = styled(TextField)({
   },
 });
 
+const PasswordButton = styled(Button)({
+  textTransform: 'none',
+  fontSize: 20,
+  lineHeight: 1.5,
+  backgroundColor: '#AED43A',
+  color: '#fff',
+  fontFamily: 'Gilam Bold',
+  borderRadius:12,
+  '&:hover': {
+    backgroundColor: '#fff',
+    borderColor: '#0062cc',
+    boxShadow: 'none',
+    color:'#AED43A'
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: '#0062cc',
+    borderColor: '#005cbf',
+  },
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+  },
+});
+
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 export const InformationPage = () => {
   return (
@@ -102,9 +126,9 @@ export const InformationPage = () => {
        
         <Grid container spacing={ 4 } sx={{ mt: 2 }}>
         <Grid item xs={ 12 } md={12} lg={11}textAlign='end'>
-                <Button sx={{ fontFamily:'Gilam Regular' }} variant='contained' component={RouLink}  to='/membershi'>
+                <PasswordButton sx={{ fontFamily:'Gilam Regular' }} variant='contained' component={RouLink}  to='/membershi'>
                  Continuar
-                </Button>
+                </PasswordButton>
             </Grid>
         </Grid>        
     </PolizasLayout>
