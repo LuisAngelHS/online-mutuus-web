@@ -1,4 +1,4 @@
-import { Button, Grid, TextField } from "@mui/material"
+import {  Grid } from "@mui/material"
 import { PolizasLayout } from "../../layout/PolizasLayout"
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -14,38 +14,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link as RouLink} from "react-router-dom"
-
-const CssTextField = styled(TextField)({
-  //Cuando el input tenga el focus.....
-  '& label.Mui-focused': {
-    color: '#AED43A',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: '#183B91',
-  },
-
-  //Color inicial del border del input....
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#183B91',
-      borderRadius: 15,
-    },
-    
-  //Color del borde al pasar el mouse por encima...  
-    '&:hover fieldset': {
-      borderColor: '#AED43A',
-    },
-
-  //Color del borde al hacer click en el input...  
-    '&.Mui-focused fieldset': {
-      borderColor: '#AED43A',
-    },
-
-    // '&.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root':{
-    //   color: 'white'
-    // },
-  },
-});
+import {PrimaryButton, SecundaryButton} from "../../components/ButtonContent"
+import {CssTextField} from "../../components/TextFieldContent"
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -185,13 +155,18 @@ export const MembershiPage = () => {
         </Grid>
         
       </Grid>
-      <Grid container sx={{ mt: 1 }}>
-      <Grid item xs={ 12 } md={12} lg={12} textAlign='end'>
-          <Button sx={{fontFamily:'Gilam Regular' }}  variant='contained'>
-            Continuar
-          </Button>
-        </Grid>
-      </Grid> 
+      <Grid container spacing={ 2 } sx={{ mt: 3 }}>
+        <Grid item xs={ 12 } md={6} lg={6} >
+                <SecundaryButton variant='contained' component={RouLink}  to='/information'>
+                 Regresar
+                </SecundaryButton>
+            </Grid>
+        <Grid item xs={ 12 } md={6} lg={6} textAlign='end'>
+                <PrimaryButton variant='contained' component={RouLink}  to='/membershi'>
+                 Continuar
+                </PrimaryButton>
+            </Grid>
+        </Grid> 
             
     </PolizasLayout>
   )

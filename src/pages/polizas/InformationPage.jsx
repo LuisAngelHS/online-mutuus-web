@@ -1,41 +1,10 @@
-import { Button, Grid, TextField, Link } from "@mui/material"
-import { styled } from '@mui/material/styles';
+import { Grid, Link } from "@mui/material"
 import { PolizasLayout } from "../../layout/PolizasLayout"
 import Checkbox from '@mui/material/Checkbox';
 import { Link as RouLink} from "react-router-dom"
 import Autocomplete from '@mui/material/Autocomplete';
-
-const CssTextField = styled(TextField)({
-  //Cuando el input tenga el focus.....
-  '& label.Mui-focused': {
-    color: '#AED43A',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: '#183B91',
-  },
-
-  //Color inicial del border del input....
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#183B91',
-      borderRadius: 15,
-    },
-    
-  //Color del borde al pasar el mouse por encima...  
-    '&:hover fieldset': {
-      borderColor: '#AED43A',
-    },
-
-  //Color del borde al hacer click en el input...  
-    '&.Mui-focused fieldset': {
-      borderColor: '#AED43A',
-    },
-
-    // '&.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root':{
-    //   color: 'white'
-    // },
-  },
-});
+import {PrimaryButton, SecundaryButton} from "../../components/ButtonContent"
+import {CssTextField} from "../../components/TextFieldContent"
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 export const InformationPage = () => {
@@ -100,11 +69,16 @@ export const InformationPage = () => {
         </Grid>
       
        
-        <Grid container spacing={ 5 } sx={{ mt: 5 }}>
-        <Grid item xs={ 12 } md={12} lg={11}textAlign='end'>
-                <Button sx={{ fontFamily:'Gilam Regular' }} variant='contained' component={RouLink}  to='/membershi'>
+        <Grid container spacing={ 5 } sx={{ mt: 3 }}>
+        <Grid item xs={ 12 } md={6} lg={6} >
+                <SecundaryButton variant='contained' component={RouLink}  to='/code'>
+                Regresar
+                </SecundaryButton>
+            </Grid>
+        <Grid item xs={ 12 } md={6} lg={6} textAlign='end'>
+                <PrimaryButton variant='contained' component={RouLink}  to='/membershi'>
                  Continuar
-                </Button>
+                </PrimaryButton>
             </Grid>
         </Grid>        
     </PolizasLayout>

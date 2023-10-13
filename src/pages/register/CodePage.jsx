@@ -1,40 +1,8 @@
-import { Button, Grid, TextField } from "@mui/material"
+import { Grid } from "@mui/material"
 import { PolizasLayout } from "../../layout/PolizasLayout"
-import { styled } from '@mui/material/styles';
 import { Link } from "react-router-dom"
-
-const CssTextField = styled(TextField)({
-  //Cuando el input tenga el focus.....
-  '& label.Mui-focused': {
-    color: '#AED43A',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: '#183B91',
-  },
-
-  //Color inicial del border del input....
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#183B91',
-      borderRadius: 15,
-    },
-    
-  //Color del borde al pasar el mouse por encima...  
-    '&:hover fieldset': {
-      borderColor: '#AED43A',
-    },
-
-  //Color del borde al hacer click en el input...  
-    '&.Mui-focused fieldset': {
-      borderColor: '#AED43A',
-    },
-
-    // '&.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root':{
-    //   color: 'white'
-    // },
-  },
-});
-
+import {PrimaryButton, SecundaryButton} from "../../components/ButtonContent"
+import {CssTextField} from "../../components/TextFieldContent"
 
 export const CodePage = () => {
   return (
@@ -64,14 +32,14 @@ export const CodePage = () => {
        
         <Grid container spacing={ 5 } sx={{ mb: 2, mt: 5 }}>
             <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <Button sx={{ backgroundColor: 'secondary.main', fontFamily:'Gilam Regular' }} variant='contained' >
+                <SecundaryButton variant='contained' >
                   Reenviar código
-                </Button>
+                </SecundaryButton>
             </Grid>
               <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <Button sx={{fontFamily:'Gilam Regular' }} variant='contained' component={Link} to='/information'>
+                <PrimaryButton variant='contained' component={Link} to='/information'>
                  Continuar
-                </Button>
+                </PrimaryButton>
             </Grid>
         </Grid>
     </PolizasLayout>

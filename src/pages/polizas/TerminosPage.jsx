@@ -1,5 +1,6 @@
-import { Button, Grid } from "@mui/material"
+import { Grid } from "@mui/material"
 import { PolizasLayout } from "../../layout/PolizasLayout"
+import {PrimaryButton} from "../../components/ButtonContent"
 import { Link as RouLink} from "react-router-dom"
 
 export const TerminosPage = () => {
@@ -15,9 +16,9 @@ Los términos y condiciones están destinados a proteger a la empresa (a ti). Te
       
         <Grid container spacing={ 5 } sx={{ mt: 5 }}>
         <Grid item xs={ 12 } md={12} lg={12}textAlign='end'>
-                <Button sx={{fontFamily:'Gilam Regular' }} variant='contained' component={RouLink} to='/membershi'>
+                <PrimaryButton variant='contained' component={RouLink} to='/membershi'>
                  Acepto
-                </Button>
+                </PrimaryButton>
             </Grid>
         </Grid>        
     </PolizasLayout>
