@@ -10,7 +10,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 export const InformationPage = () => {
   return (
     <PolizasLayout title="">
-        <Grid container  spacing={3}>
+        <Grid container  spacing={2}>
             <Grid item xs={ 12 } md={12} lg={12}>
             <p>Jose Pedro Gomez, por favor ingresa la siguiente información: </p>
             </Grid>
@@ -60,16 +60,14 @@ export const InformationPage = () => {
         </Grid>
         </Grid>
 
-        <Grid container sx={{ mt: 8 }} justifyContent='center'>
+        <Grid container sx={{ mt: 2 }} justifyContent='center'>
             <Checkbox {...label} />
             <Link sx={{ mt: 1, fontSize:15, fontFamily:'Gilam Book'}} component={RouLink} to='/terms'>Acepto los terminos y condiciones</Link>
             <Grid item xs={ 12} md={12} lg={12}  textAlign='center' sx={{ mt: 3, color: 'error.main' }} >
             <p className="text-font-book">Es necesario que acepte los términos y condiciones para continuar.</p>
             </Grid>
         </Grid>
-      
-       
-        <Grid container spacing={ 5 } sx={{ mt: 3 }}>
+        <Grid container spacing={ 2 } sx={{ mt: 1 }}>
         <Grid item xs={ 12 } md={6} lg={6} >
                 <SecundaryButton variant='contained' component={RouLink}  to='/code'>
                 Regresar

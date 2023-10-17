@@ -1,40 +1,51 @@
-import { Box } from '@mui/system'
-import { NavBar } from '../components';
-import { Toolbar, Grid, Typography } from '@mui/material';
-import {  SideBar } from '../components';
+import { Grid, Typography } from '@mui/material';
+import {  SideBar, SideBarRegister } from '../components';
 
+const drawerWidth = 600;
+const drawerWidth2 = 600;
+export const MenuLayout = ({ children, title = '', }) => {
 
-const drawerWidth = 200;
-export const MenuLayout = ({ children, title = ''  }) => {
   return (
 
     <Grid
       container
       spacing={ 0 }
-      direction="column"
       alignItems="center"
       justifyContent="center"
-      className='text-font-book-form'
-      sx={{ color: 'primary.main', padding: 30}}
+      className='text-font-book-form fondoColor'
+      sx={{ color: 'primary.main', minHeight: '100vh'}}
     >
-       <SideBar drawerWidth={ drawerWidth } />
-      {/* <NavBar/> */}
-      {/* <Grid item sx={{ width: { xs:200, sm: 400, md:500, lg:750},}}>
-          <Typography variant='h4' sx={{ fontFamily:'Gilam Bold'}} align='center'>{ title }</Typography>
-            <br />
-            <br />
-            { children }
-      </Grid> */}
+      {title === "Iniciar Sesión" || title ==="Cambio de contraseña"
+        ?  <SideBar drawerWidth={ drawerWidth } />
+        : <SideBarRegister drawerWidth2={ drawerWidth2 } />
+      }
 
+      {title === "Iniciar Sesión" || title ==="Cambio de contraseña"
+        ?  <Grid item xs={ 9 } md={10} lg={3} sx={{
+          backgroundColor: 'white', 
+          padding: 3, 
+          borderRadius: 8
+      }}>
+        
+        <Typography variant='h5' sx={{ fontFamily:'Gilam Bold'}}>{ title }</Typography>
+          <br />
+          <br />
+          { children }
 
-      <Grid item sx={{ width: { xs:200, sm: 400, md:500, lg:750},}}>
-          
-          <Typography variant='h5' sx={{ fontFamily:'Gilam Bold'}} align='center'>{ title }</Typography>
-            <br />
-            <br />
-            { children }
+      </Grid>
+        :  <Grid item xs={ 9 } md={10} lg={4} sx={{
+          backgroundColor: 'white', 
+          padding: 6, 
+          borderRadius: 8
+      }}>
+        
+        <Typography variant='h5' sx={{ fontFamily:'Gilam Bold'}}>{ title }</Typography>
+          <br />
+          <br />
+          { children }
 
-        </Grid>
+      </Grid>
+      }
     </Grid>
   )
 }

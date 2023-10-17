@@ -9,30 +9,32 @@ export const PasswordPage = () => {
     <MenuLayout title="Cambio de contraseña">
         <form>
           <Grid container > 
-            <Grid container spacing={ 2 }  sx={{ mb: 2, mt: 0}} justifyContent='center' alignItems='center'>
-            <Grid item xs={ 12 } md={7} lg={7}>
+            <Grid container spacing={ 2 } justifyContent='center' alignItems='center'>
+            <Grid item xs={ 12 } md={7} lg={10} > 
+            <label htmlFor="">Password</label>
             <CssTextField 
-              label="Contraseña" 
-              type="password" 
-              placeholder='correo@google.com' 
+              type="email" 
+              placeholder='Ingresa tu contraseña aquí'
+              name='email'
               sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
               InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
               fullWidth
             />
-            </Grid>
+          </Grid>
             </Grid>
             
-            <Grid container spacing={ 2 }  sx={{ mb: 2, mt: 0}} justifyContent='center' alignItems='center'>
-            <Grid item xs={ 12 } md={7} lg={7}>
-            <CssTextField 
-              label="Confirmar Contraseña" 
+            <Grid container spacing={ 2 } justifyContent='center' alignItems='center'>
+            <Grid item xs={ 12 } md={7} lg={10} sx={{ mt: 2 }}>
+          <label htmlFor="">Confirmar Password</label>
+          <CssTextField 
               type="password" 
-              placeholder='correo@google.com' 
+              placeholder='Ingresa tu contraseña aquí' 
+              name='password'
               sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
               InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
               fullWidth
             />
-            </Grid>
+          </Grid>
             </Grid>
 
             <Grid container spacing={3} sx={{ mb: 2, mt: 3}} justifyContent='center'>

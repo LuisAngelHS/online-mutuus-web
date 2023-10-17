@@ -147,7 +147,7 @@ export const MembershiPage = () => {
      
 
 
-      <Grid container sx={{ mt: 2 }}>
+      <Grid container sx={{ mt: 1 }}>
         <Grid item xs={ 12 } md={8} lg={8} textAlign='end'>
             <p className="text-font-book">Total a pagar: $14,500.00</p>
             <p className="text-font-book">Póliza 1M         $12,000</p>
@@ -155,13 +155,13 @@ export const MembershiPage = () => {
         </Grid>
         
       </Grid>
-      <Grid container spacing={ 2 } sx={{ mt: 3 }}>
-        <Grid item xs={ 12 } md={6} lg={6} >
+      <Grid container spacing={ 1 } sx={{ mt: 0 }} textAlign='center'>
+        <Grid item xs={ 6 } md={6} lg={6} >
                 <SecundaryButton variant='contained' component={RouLink}  to='/information'>
                  Regresar
                 </SecundaryButton>
             </Grid>
-        <Grid item xs={ 12 } md={6} lg={6} textAlign='end'>
+        <Grid item xs={ 6 } md={6} lg={6}>
                 <PrimaryButton variant='contained' component={RouLink}  to='/membershi'>
                  Continuar
                 </PrimaryButton>

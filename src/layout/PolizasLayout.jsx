@@ -1,7 +1,7 @@
-import {  Grid, Typography } from '@mui/material';
-import { SideBar } from '../components';
+import {  Grid } from '@mui/material';
+import Logo2 from '../assets/img/mutuus-1/Logo2.png';
+import { Footer } from '../components';
 
-const drawerWidth = 200;
 export const PolizasLayout = ({ children, title = ''   }) => {
   return (
     <Grid
@@ -10,17 +10,20 @@ export const PolizasLayout = ({ children, title = ''   }) => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      className='text-font-book-form'
-      sx={{ color: 'primary.main', padding: 15,}}
+      className='text-font-book-form fondoColor2'
+      sx={{ color: 'primary.main',  marginTop:7}}
     >
-      <SideBar drawerWidth={ drawerWidth } />
-      {/* <NavBar/> */}
-      <Grid item sx={{ width: { xs:200, sm: 400, md:500, lg:950},}}>
-      <Typography variant='h5' sx={{ fontFamily:'Gilam Bold'}} align='center'>{ title }</Typography>
+    
+      <Grid textAlign='center'>
+      <img src={Logo2} alt="Mutuus" width="230" height="85" align='center'/>
+      </Grid>
+      <Grid item sx={{ width: { xs:300, sm: 400, md:500, lg:950}, height: { xs:1050, sm: 500, md:500, lg:500},}} >
             <br />
             <br />
             { children }
+            
       </Grid>
+      <Footer/>
     </Grid>
   )
 }

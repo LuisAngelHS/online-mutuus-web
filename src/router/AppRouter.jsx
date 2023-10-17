@@ -3,8 +3,12 @@ import {AuthRoutes} from '../auth/routes/AuthRoutes';
 import {RegisterPage, CodePage, LoginPage, PasswordPage} from '../pages/register';
 import {InformationPage, TerminosPage, MembershiPage} from '../pages/polizas';
 import {PaymentsPage} from '../pages/Pagos';
+import { getEnvVariables } from "../helpers/getEnvVariables";
 
 export const AppRouter = () => {
+  console.log(getEnvVariables());
+  
+
   return (
     <Routes>
       <Route path="/*" element={<LoginPage/>}/>

@@ -7,13 +7,13 @@ export const LoginButton = styled(Button)({
     lineHeight: 1.5,
     backgroundColor: '#AED43A',
     color: '#fff',
-    fontFamily: 'Gilam Bold',
+    fontFamily: 'Gilam Book',
     borderRadius:15,
     '&:hover': {
       backgroundColor: '#183B91',
       borderColor: '#0062cc',
       boxShadow: 'none',
-      color:'#AED43A'
+      color:'#fff'
     },
     '&:active': {
       boxShadow: 'none',
@@ -29,12 +29,12 @@ export const LoginButton = styled(Button)({
     textTransform: 'none',
     fontSize: 20,
     lineHeight: 1.5,
-    backgroundColor: '#183B91',
-    color: '#fff',
-    fontFamily: 'Gilam Bold',
+    backgroundColor: '#C0C0C0',
+    color: '#183B91',
+    fontFamily: 'Gilam Book',
     borderRadius:15,
     '&:hover': {
-      backgroundColor: '#444343',
+      backgroundColor: '#183B91',
       borderColor: '#0062cc',
       boxShadow: 'none',
       color:'#fff'
@@ -54,7 +54,7 @@ export const LoginButton = styled(Button)({
     lineHeight: 1.5,
     backgroundColor: '#AED43A',
     color: '#fff',
-    fontFamily: 'Gilam Bold',
+    fontFamily: 'Gilam Book',
     borderRadius:15,
     '&:hover': {
       backgroundColor: '#444343',
