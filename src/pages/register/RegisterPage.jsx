@@ -222,6 +222,7 @@ export const RegisterPage = () => {
                 <Alert severity='error'>{ errorMessage }</Alert>
               </Grid>
             </Grid>
+            
             <Grid container spacing={3  } sx={{ mb: 0, mt: 3 }}>
               <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
                 <SecundaryButton variant='contained' component={Link} to='/login'>
