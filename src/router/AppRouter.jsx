@@ -3,12 +3,15 @@ import {AuthRoutes} from '../auth/routes/AuthRoutes';
 import {RegisterPage, CodePage, LoginPage, PasswordPage} from '../pages/register';
 import {InformationPage, TerminosPage, MembershiPage} from '../pages/polizas';
 import {PaymentsPage} from '../pages/Pagos';
-import { getEnvVariables } from "../helpers/getEnvVariables";
+import { useAuthStore } from '../hooks';
+import { ProgressCircular } from '../components/ProgressCircular';
 
 export const AppRouter = () => {
-  console.log(getEnvVariables());
+  const { status } = useAuthStore();
   
-
+//   if ( status === 'checking' ) {
+//     return <ProgressCircular />
+// }
   return (
     <Routes>
       <Route path="/*" element={<LoginPage/>}/>

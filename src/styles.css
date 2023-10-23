@@ -28,6 +28,14 @@ body {
   /* height: 8%; */
 }
 
+.textForma input{
+  text-transform: lowercase;
+
+}
+
+.textForma input::first-letter {
+  text-transform: uppercase;
+}
 /* @media (min-width: 350px) {
   .footer-d {
     background-color: #fff;

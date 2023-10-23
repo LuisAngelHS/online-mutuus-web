@@ -1,27 +1,54 @@
 import { Grid,Link } from '@mui/material';
+import { useState, useEffect } from 'react';
 import { MenuLayout } from "../../layout/MenuLayout"
 import {LoginButton} from "../../components/ButtonContent"
 import {CssTextField} from "../../components/TextFieldContent"
-import { Link as RouLink} from "react-router-dom"
+import { Link as RouLink, useNavigate  } from "react-router-dom"
 import Radio from '@mui/material/Radio';
 import { useAuthStore, useForm } from '../../hooks';
+import { ProgressCircular } from '../../components/ProgressCircular';
 
 const LoginForm = {
     email:'',
     password: ''
 }
 
+let EmaExpres =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+
+const formValidations ={
+  email:[(value)=> EmaExpres.test(value), 'El correo es obligatorio.'],
+  password:[(value)=> value.length >=6, 'La contraseña es obligatoria.'],
+}
+
 export const LoginPage = () => {
+  const { status } = useAuthStore();
+  const history = useNavigate();
 
   const {startLogin} = useAuthStore();
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const {email, password, onInputChange} = useForm(LoginForm)
+  const {email, password,isFormValid, emailValid,passwordValid,onInputChange} = useForm(LoginForm, formValidations)
 
   const onSubmit = (event) =>{
     event.preventDefault();
-    console.log({email, password});
-    startLogin({email, password})
+    setFormSubmitted(true);
+  
+    if ( !isFormValid ) return;
+
+    startLogin({email, password}).then(succ =>{
+      console.log(succ);
+      if(succ.ok === 'error'){
+        history('code');
+      }
+    })
   }
+
+  // useEffect(() => {
+  //   console.log(status);
+  //   if ( status === 'checking' ) {
+  //    return <ProgressCircular />
+  //   }    
+  // }, [status])
 
 
   return (
@@ -43,6 +70,8 @@ export const LoginPage = () => {
               name='email'
               value={email}
               onChange={onInputChange}
+              error={!!emailValid && formSubmitted}
+              helperText={ formSubmitted ? emailValid : ''}
               sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
               InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
               fullWidth
@@ -58,6 +87,8 @@ export const LoginPage = () => {
               name='password'
               value={password}
               onChange={onInputChange}
+              error={!!passwordValid && formSubmitted}
+              helperText={ formSubmitted ? passwordValid : ''}
               sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
               InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
               fullWidth
@@ -80,7 +111,7 @@ export const LoginPage = () => {
             </Grid>
             <Grid container  sx={{ mb: 2, mt: 5 }}>
             <Grid item xs={ 12 } sm={ 6 } lg={5} textAlign='center'>
-              <LoginButton type='submit' variant='contained' component={RouLink} to='/code'>
+              <LoginButton type='submit' variant='contained'>
                 Ingresar
               </LoginButton>
             </Grid>
