@@ -1,127 +1,116 @@
-import { Button, Grid, TextField } from "@mui/material"
+import { Grid } from "@mui/material"
 import { PolizasLayout } from "../../layout/PolizasLayout"
-import { styled } from '@mui/material/styles';
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import {PrimaryButton, SecundaryButton} from "../../components/ButtonContent"
+import {CssTextField} from "../../components/TextFieldContent"
+import { useAuthStore, useForm } from '../../hooks';
+import { useState, useEffect } from 'react';
 
-const CssTextField = styled(TextField)({
-  //Cuando el input tenga el focus.....
-  '& label.Mui-focused': {
-    color: '#ffff',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: '#183B91',
-  },
-
-  //Color inicial del border del input....
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#AED43A',
-      borderRadius: 15,
-    },
-    
-  //Color del borde al pasar el mouse por encima...  
-    '&:hover fieldset': {
-      borderColor: '#ffff',
-    },
-
-  //Color del borde al hacer click en el input...  
-    '&.Mui-focused fieldset': {
-      borderColor: '#fff',
-    },
-
-    // '&.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root':{
-    //   color: 'white'
-    // },
-  },
-});
-
-const PasswordButton = styled(Button)({
-  textTransform: 'none',
-  fontSize: 20,
-  lineHeight: 1.5,
-  backgroundColor: '#AED43A',
-  color: '#fff',
-  fontFamily: 'Gilam Bold',
-  borderRadius:12,
-  '&:hover': {
-    backgroundColor: '#fff',
-    borderColor: '#0062cc',
-    boxShadow: 'none',
-    color:'#AED43A'
-  },
-  '&:active': {
-    boxShadow: 'none',
-    backgroundColor: '#0062cc',
-    borderColor: '#005cbf',
-  },
-  '&:focus': {
-    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
-  },
-});
-
-const PasswordButton2 = styled(Button)({
-  textTransform: 'none',
-  fontSize: 20,
-  lineHeight: 1.5,
-  backgroundColor: '#fff',
-  color: '#AED43A',
-  fontFamily: 'Gilam Bold',
-  borderRadius:12,
-  '&:hover': {
-    backgroundColor: '#AED43A',
-    borderColor: '#AED43A',
-    boxShadow: 'none',
-    color:'#fff'
-  },
-  '&:active': {
-    boxShadow: 'none',
-    backgroundColor: '#0062cc',
-    borderColor: '#005cbf',
-  },
-  '&:focus': {
-    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
-  },
-});
-
+const CodeForm = {
+  code1:'',
+  code2:'',
+  code3:'',
+  code4: '',
+}
+const formValidations ={
+  code1:[(value)=> value.length >=1, 'El Código es obligatorio.'],
+  code2:[(value)=> value.length >=1, 'El Código es obligatorio.'],
+  code3:[(value)=> value.length >=1, 'El Código es obligatorio.'],
+  code4:[(value)=> value.length >=1, 'El Código es obligatorio.'],
+}
 
 export const CodePage = () => {
+  const history = useNavigate();
+  const {startCode, user, code, status, errorMessage} = useAuthStore();
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const { formState,code1, code2,code3, code4, onInputChange,
+    isFormValid, code1Valid, code2Valid, code3Valid, code4Valid} = useForm(CodeForm, formValidations)
+  const onSubmit = (event) =>{
+    console.log(code);
+    event.preventDefault();
+    setFormSubmitted(true);
+    const {code1,
+      code2,
+      code3,
+      code4} = formState;
+    const result = {
+      'customer_code':{
+        code: code1+code2+code3+code4,
+        customer_id: user.uid
+      }
+    } 
+    if ( !isFormValid ) return;
+    startCode(result);
+   
+  }
+
+  useEffect(() => {
+    if ( status === 'CodeAuth' ) {
+      history('/information');
+    }   
+  }, [status])
+
   return (
     <PolizasLayout title="Contratación en línea">
-        <Grid item xs={ 12 } md={6} lg={6}>
+      <form onSubmit={onSubmit}>
+        <Grid item xs={ 12 } md={6} lg={12} textAlign='center'>
             <p className="text-font-book">Se he enviado un código por SMS a su celular.</p>
             <p className="text-font-book">Por favor capture el código recibido:</p>
         </Grid>
-        <Grid container sx={{ mt: 10 }}>
+        <Grid container sx={{ mt: 6 }}>
             <Grid  item xs={ 6 } md={3} lg={3}  textAlign='center'>
-            <CssTextField className="input-code"  sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}/>
+            <CssTextField  sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:50, width:60  } }}
+            inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+            name='code1'
+            value={code1}
+            onChange={onInputChange}
+            error={!!code1Valid && formSubmitted}
+            helperText={ formSubmitted ? code1Valid : ''}/>
             </Grid>
-            <Grid  item xs={ 6 } md={3} lg={3}  sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }} textAlign='center'>
-            <CssTextField className="input-code"/>
+            <Grid  item xs={ 6 } md={3} lg={3}   textAlign='center'>
+            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:50, width:60 } }}
+             name='code2'
+             value={code2}
+             onChange={onInputChange}
+             error={!!code2Valid && formSubmitted}
+             helperText={ formSubmitted ? code2Valid : ''}/>
             </Grid>
-            <Grid  item xs={ 6 } md={3} lg={3} sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }} textAlign='center'>
-            <CssTextField className="input-code"/>
+            <Grid  item xs={ 6 } md={3} lg={3}  textAlign='center'>
+            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:50,width:60  } }}
+             name='code3'
+             value={code3}
+             onChange={onInputChange}
+             error={!!code3Valid && formSubmitted}
+             helperText={ formSubmitted ? code3Valid : ''}/>
             </Grid>
-            <Grid  item xs={ 6} md={3} lg={3}  sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }} textAlign='center'>
-            <CssTextField className="input-code"/>
+            <Grid  item xs={ 6} md={3} lg={3}   textAlign='center'>
+            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:50, width:60 } }}
+             name='code4'
+             value={code4}
+             onChange={onInputChange}
+             error={!!code4Valid && formSubmitted}
+             helperText={ formSubmitted ? code4Valid : ''}/>
             </Grid>
             <Grid item xs={ 12} md={12} lg={12} sx={{ mt: 3, color: 'error.main' }} textAlign='center' >
-            <p className="text-font-book">Código incorrector favor de Verificar.</p>
+            <p className="text-font-book" display={ !!errorMessage ? '': 'none' }>{errorMessage}</p>
             </Grid>
             
         </Grid>
        
-        <Grid container spacing={ 5 } sx={{ mb: 2, mt: 5 }}>
+        <Grid container spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
             <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <PasswordButton variant='contained' >
+                <SecundaryButton variant='contained' >
                   Reenviar código
-                </PasswordButton>
+                </SecundaryButton>
             </Grid>
               <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <PasswordButton2 variant='contained' component={Link} to='/information'>
+                <PrimaryButton type='submit' variant='contained'>
                  Continuar
-                </PasswordButton2>
+                </PrimaryButton>
             </Grid>
         </Grid>
+        </form>
     </PolizasLayout>
   )
 }

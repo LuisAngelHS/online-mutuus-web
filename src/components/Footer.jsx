@@ -1,31 +1,41 @@
-import { Container, Typography, Grid, Link } from '@mui/material';
+import { Container, Typography, Grid, Link, Box } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import FacebookIcon  from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 export const Footer = () => {
-    return (
-        <footer className='footer'>
-          <Container maxWidth="lg">
-            <Grid container spacing={2}>
-              <Grid item xs={12} lg={12}>
-                <Typography variant="body2" color="textSecondary" align="center">
-                  © {new Date().getFullYear()} Your Website Name
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography variant="body2" color="textSecondary" align="center">
-                  <Link color="inherit" href="#">
-                    Privacy Policy
-                  </Link>
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography variant="body2" color="textSecondary" align="center">
-                  <Link color="inherit" href="#">
-                    Terms of Service
-                  </Link>
-                </Typography>
-              </Grid>
-            </Grid>
-          </Container>
-        </footer>
-      );
+  return (
+    <Box
+    className='footer-d'
+    sx={{
+        // borderRadius:18,
+        // bgcolor: '#183B91',
+        // color: 'white',
+        p: 2,
+        // position: 'fixed',
+        // bottom: 0,
+        // width:1920,
+    }}
+  >
+    <Container>
+      <Grid container spacing={2} alignItems="center">
+        <Grid item xs={12} md={6}>
+          <Typography variant="body1" align="center">
+            © 2023 Mutuus. Todos los derechos reservados.
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={6} container justifyContent="center">
+          <Link href="https://www.facebook.com/psmutuus/?locale=es_LA" target="_blank" color="inherit">
+    
+      <FacebookIcon />
+
+          </Link>
+          <Link href="https://www.linkedin.com/company/psmutuus/" target="_blank" color="inherit">
+            <LinkedInIcon />
+          </Link>
+        </Grid>
+      </Grid>
+    </Container>
+  </Box>
+  )
 }

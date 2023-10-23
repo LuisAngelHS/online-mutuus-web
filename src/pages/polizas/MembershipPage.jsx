@@ -1,4 +1,4 @@
-import { Button, Grid, TextField } from "@mui/material"
+import {  Grid } from "@mui/material"
 import { PolizasLayout } from "../../layout/PolizasLayout"
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -14,67 +14,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link as RouLink} from "react-router-dom"
-
-const CssTextField = styled(TextField)({
-  //Cuando el input tenga el focus.....
-  '& label.Mui-focused': {
-    color: '#AED43A',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: '#183B91',
-  },
-
-  //Color inicial del border del input....
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#FFF',
-      borderRadius: 15,
-    },
-    
-  //Color del borde al pasar el mouse por encima...  
-    '&:hover fieldset': {
-      borderColor: '#AED43A',
-    },
-
-  //Color del borde al hacer click en el input...  
-    '&.Mui-focused fieldset': {
-      borderColor: '#AED43A',
-    },
-
-    // '&.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root':{
-    //   color: 'white'
-    // },
-  },
-});
-const PasswordButton = styled(Button)({
-  textTransform: 'none',
-  fontSize: 20,
-  lineHeight: 1.5,
-  backgroundColor: '#AED43A',
-  color: '#fff',
-  fontFamily: 'Gilam Bold',
-  borderRadius:12,
-  '&:hover': {
-    backgroundColor: '#fff',
-    borderColor: '#0062cc',
-    boxShadow: 'none',
-    color:'#AED43A'
-  },
-  '&:active': {
-    boxShadow: 'none',
-    backgroundColor: '#0062cc',
-    borderColor: '#005cbf',
-  },
-  '&:focus': {
-    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
-  },
-});
+import {PrimaryButton, SecundaryButton} from "../../components/ButtonContent"
+import {CssTextField} from "../../components/TextFieldContent"
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    fontSize: 17,
-    backgroundColor: '#AED43A',
-    color: '#183B91',
+    backgroundColor: '#183B91',
+    color: '#AED43A',
     fontFamily:'Gilam Bold'
   },
   [`&.${tableCellClasses.body}`]: {
@@ -85,7 +31,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.action.hover,
+
   },
   // hide last border
   '&:last-child td, &:last-child th': {
@@ -99,7 +46,7 @@ function createData(parentes, name, estatura, peso, curp) {
 
 const rows = [
   createData('', 'Jorge Garcia Perez', 1.15, 20, 'JJJS98524178745'),
-  createData('', 'Pedro Lopez Perez', 1.15, 20, 'JJJS98524178745')
+  createData('', 'Pancracio Lopez Perez', 1.15, 20, 'JJJS98524178745')
 
 ];
 export const MembershiPage = () => {
@@ -110,19 +57,18 @@ export const MembershiPage = () => {
           <p>Clave del agente: </p>
         </Grid>
         <Grid item xs={ 12 } md={2} lg={2}>
-          <CssTextField label="Agente" sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}
-              InputLabelProps={{style:{color: '#FFF', fontFamily:'Gilam Book'}}}   type="text" fullWidth size="small"/>
+          <CssTextField label="Agente" sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+                InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}   type="text" fullWidth size="small"/>
         </Grid>
         <Grid item xs={ 12 } md={6} lg={7}>
         <Autocomplete
           disablePortal
-          sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}
-              
+          sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
                 
           size="small"
           id="combo-box-demo"
           options={top100Films}
-          renderInput={(params) => <CssTextField {...params}   InputLabelProps={{style:{color: '#FFF', fontFamily:'Gilam Book'}}}  label="Nombre" />}
+          renderInput={(params) => <CssTextField {...params}   InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}  label="Nombre" />}
         />
         </Grid>
 
@@ -182,8 +128,8 @@ export const MembershiPage = () => {
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
             >
-              <FormControlLabel value="female" control={<Radio size="small" color="success" />}/><label className="check-member-tabla" htmlFor="Hijo">Hijo</label>
-              <FormControlLabel value="male" control={<Radio size="small" color="success" />}/><label className="check-member-tabla" htmlFor="Otro">Otro</label>
+              <FormControlLabel value="female" control={<Radio size="small" />}/><label className="check-member-tabla" htmlFor="Hijo">Hijo</label>
+              <FormControlLabel value="male" control={<Radio size="small" />}/><label className="check-member-tabla" htmlFor="Otro">Otro</label>
             </RadioGroup>
           </FormControl>
               </StyledTableCell>
@@ -201,7 +147,7 @@ export const MembershiPage = () => {
      
 
 
-      <Grid container sx={{ mt: 2 }}>
+      <Grid container sx={{ mt: 1 }}>
         <Grid item xs={ 12 } md={8} lg={8} textAlign='end'>
             <p className="text-font-book">Total a pagar: $14,500.00</p>
             <p className="text-font-book">Póliza 1M         $12,000</p>
@@ -209,13 +155,18 @@ export const MembershiPage = () => {
         </Grid>
         
       </Grid>
-      <Grid container sx={{ mt: 1 }}>
-      <Grid item xs={ 12 } md={12} lg={12} textAlign='end'>
-          <PasswordButton sx={{fontFamily:'Gilam Regular' }}  variant='contained'>
-            Continuar
-          </PasswordButton>
-        </Grid>
-      </Grid> 
+      <Grid container spacing={ 1 } sx={{ mt: 0 }} textAlign='center'>
+        <Grid item xs={ 6 } md={6} lg={6} >
+                <SecundaryButton variant='contained' component={RouLink}  to='/information'>
+                 Regresar
+                </SecundaryButton>
+            </Grid>
+        <Grid item xs={ 6 } md={6} lg={6}>
+                <PrimaryButton variant='contained' component={RouLink}  to='/membershi'>
+                 Continuar
+                </PrimaryButton>
+            </Grid>
+        </Grid> 
             
     </PolizasLayout>
   )

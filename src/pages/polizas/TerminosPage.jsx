@@ -1,30 +1,8 @@
-import { Button, Grid } from "@mui/material"
+import { Grid } from "@mui/material"
 import { PolizasLayout } from "../../layout/PolizasLayout"
+import {PrimaryButton} from "../../components/ButtonContent"
 import { Link as RouLink} from "react-router-dom"
-import { styled } from '@mui/material/styles';
-const PasswordButton = styled(Button)({
-  textTransform: 'none',
-  fontSize: 20,
-  lineHeight: 1.5,
-  backgroundColor: '#AED43A',
-  color: '#fff',
-  fontFamily: 'Gilam Bold',
-  borderRadius:12,
-  '&:hover': {
-    backgroundColor: '#fff',
-    borderColor: '#0062cc',
-    boxShadow: 'none',
-    color:'#AED43A'
-  },
-  '&:active': {
-    boxShadow: 'none',
-    backgroundColor: '#0062cc',
-    borderColor: '#005cbf',
-  },
-  '&:focus': {
-    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
-  },
-});
+
 export const TerminosPage = () => {
   return (
     <PolizasLayout title="Términos y Condiciones.">
@@ -38,9 +16,9 @@ Los términos y condiciones están destinados a proteger a la empresa (a ti). Te
       
         <Grid container spacing={ 5 } sx={{ mt: 5 }}>
         <Grid item xs={ 12 } md={12} lg={12}textAlign='end'>
-                <PasswordButton sx={{fontFamily:'Gilam Regular' }} variant='contained' component={RouLink} to='/membershi'>
+                <PrimaryButton variant='contained' component={RouLink} to='/membershi'>
                  Acepto
-                </PasswordButton>
+                </PrimaryButton>
             </Grid>
         </Grid>        
     </PolizasLayout>

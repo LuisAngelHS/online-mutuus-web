@@ -3,8 +3,15 @@ import {AuthRoutes} from '../auth/routes/AuthRoutes';
 import {RegisterPage, CodePage, LoginPage, PasswordPage} from '../pages/register';
 import {InformationPage, TerminosPage, MembershiPage} from '../pages/polizas';
 import {PaymentsPage} from '../pages/Pagos';
+import { useAuthStore } from '../hooks';
+import { ProgressCircular } from '../components/ProgressCircular';
 
 export const AppRouter = () => {
+  const { status } = useAuthStore();
+  
+//   if ( status === 'checking' ) {
+//     return <ProgressCircular />
+// }
   return (
     <Routes>
       <Route path="/*" element={<LoginPage/>}/>

@@ -1,118 +1,125 @@
-import { Button, Grid,TextField, Link } from '@mui/material';
+import { Grid,Link } from '@mui/material';
+import { useState, useEffect } from 'react';
 import { MenuLayout } from "../../layout/MenuLayout"
-import { Google, Facebook } from '@mui/icons-material';
-import { styled } from '@mui/material/styles';
-import * as React from 'react';
-import { Link as RouLink} from "react-router-dom"
+import {LoginButton} from "../../components/ButtonContent"
+import {CssTextField} from "../../components/TextFieldContent"
+import { Link as RouLink, useNavigate  } from "react-router-dom"
+import Radio from '@mui/material/Radio';
+import { useAuthStore, useForm } from '../../hooks';
+import { ProgressCircular } from '../../components/ProgressCircular';
 
-const CssTextField = styled(TextField)({
-  //Cuando el input tenga el focus.....
-  '& label.Mui-focused': {
-    color: '#AED43A',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: '#183B91',
-  },
+const LoginForm = {
+    email:'',
+    password: ''
+}
 
-  //Color inicial del border del input....
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#FFF',
-      borderRadius: 15,
-    },
-    
-  //Color del borde al pasar el mouse por encima...  
-    '&:hover fieldset': {
-      borderColor: '#AED43A',
-    },
+let EmaExpres =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
-  //Color del borde al hacer click en el input...  
-    '&.Mui-focused fieldset': {
-      borderColor: '#AED43A',
-    },
-
-    // '&.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root':{
-    //   color: 'white'
-    // },
-  },
-});
-
-const LoginButton = styled(Button)({
-  textTransform: 'none',
-  fontSize: 20,
-  lineHeight: 1.5,
-  backgroundColor: '#AED43A',
-  color: '#fff',
-  fontFamily: 'Gilam Bold',
-  borderRadius:15,
-  '&:hover': {
-    backgroundColor: '#fff',
-    borderColor: '#0062cc',
-    boxShadow: 'none',
-    color:'#AED43A'
-  },
-  '&:active': {
-    boxShadow: 'none',
-    backgroundColor: '#0062cc',
-    borderColor: '#005cbf',
-  },
-  '&:focus': {
-    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
-  },
-});
+const formValidations ={
+  email:[(value)=> EmaExpres.test(value), 'El correo es obligatorio.'],
+  password:[(value)=> value.length >=6, 'La contraseña es obligatoria.'],
+}
 
 export const LoginPage = () => {
+  const { status } = useAuthStore();
+  const history = useNavigate();
+
+  const {startLogin} = useAuthStore();
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const {email, password,isFormValid, emailValid,passwordValid,onInputChange} = useForm(LoginForm, formValidations)
+
+  const onSubmit = (event) =>{
+    event.preventDefault();
+    setFormSubmitted(true);
+  
+    if ( !isFormValid ) return;
+
+    startLogin({email, password}).then(succ =>{
+      console.log(succ);
+      if(succ.ok === 'error'){
+        history('code');
+      }
+    })
+  }
+
+  // useEffect(() => {
+  //   console.log(status);
+  //   if ( status === 'checking' ) {
+  //    return <ProgressCircular />
+  //   }    
+  // }, [status])
+
+
   return (
-    <MenuLayout title="">
-       <form>
+    <MenuLayout title="Iniciar Sesión">
+       <form onSubmit={onSubmit}>
+       <Grid container justifyContent='center' spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
+            <Grid item xs={ 12 } md={7} lg={9}>
+              <LoginButton type='submit' variant='contained' fullWidth >
+                Iniciar sesión con google
+              </LoginButton>
+            </Grid>
+          </Grid>
         <Grid container justifyContent='center'>
-          <Grid item xs={12} md={8} lg={7} sx={{ mt: 2 }} > 
+          <Grid item xs={ 12 } md={7} lg={10} sx={{ mt: 2 }} > 
+            <label htmlFor="">Email</label>
             <CssTextField 
-              label="Correo" 
               type="email" 
-              placeholder='correo@google.com' 
-              sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}
-              InputLabelProps={{style:{color: '#FFF', fontFamily:'Gilam Book'}}}
+              placeholder='Ingresa tu correo electrónico aquí'
+              name='email'
+              value={email}
+              onChange={onInputChange}
+              error={!!emailValid && formSubmitted}
+              helperText={ formSubmitted ? emailValid : ''}
+              sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+              InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
               fullWidth
             />
           </Grid>
           </Grid>
           <Grid container justifyContent='center'>
-          <Grid item xs={12} md={8} lg={7} sx={{ mt: 2 }}>
+          <Grid item xs={ 12 } md={7} lg={10} sx={{ mt: 2 }}>
+          <label htmlFor="">Password</label>
           <CssTextField 
-              label="Contraseña" 
               type="password" 
-              placeholder='Contraseña' 
-              sx={{ input: { color: '#FFF', fontFamily:'Gilam Book' } }}
-              InputLabelProps={{style:{color: '#FFF', fontFamily:'Gilam Book'}}}
+              placeholder='Ingresa tu contraseña aquí' 
+              name='password'
+              value={password}
+              onChange={onInputChange}
+              error={!!passwordValid && formSubmitted}
+              helperText={ formSubmitted ? passwordValid : ''}
+              sx={{ input: { color: '#183B91', fontFamily:'Gilam Book' } }}
+              InputLabelProps={{style:{color: '#183B91', fontFamily:'Gilam Book'}}}
               fullWidth
             />
           </Grid>
           </Grid>
       
-          
-          <Grid container justifyContent='center' spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
-            <Grid item xs={12} md={8} lg={7}>
-              <LoginButton  variant='outlined' fullWidth component={RouLink} to='/register'>
-                Continuar
-              </LoginButton >
+          <Grid container  sx={{ mb: 2, mt: 1 }}>
+              <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
+              <Radio
+                value="a"
+                name="radio-buttons"
+                inputProps={{ 'aria-label': 'A' }}
+              />
+                <label style={{  fontSize:15, fontFamily:'Gilam Book', color:'#C0C0C0' }}>Recordarme</label> 
+              </Grid>
+              <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
+              <Link sx={{ mt: 1, fontSize:15, fontFamily:'Gilam Bold', color:'#C0C0C0' }} component={RouLink} to='/password'>Olvide mi contraseña.</Link>
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={8} lg={7} textAlign='center'>
-            <Google sx={{cursor:'pointer' }}/> &nbsp;&nbsp;
-            <Facebook  sx={{cursor:'pointer' }}/>
+            <Grid container  sx={{ mb: 2, mt: 5 }}>
+            <Grid item xs={ 12 } sm={ 6 } lg={5} textAlign='center'>
+              <LoginButton type='submit' variant='contained'>
+                Ingresar
+              </LoginButton>
             </Grid>
-          </Grid>
-
-          <Grid container justifyContent='center'>
-          <Grid item xs={12} md={8} lg={7} justifyContent='center'>
-          <Link sx={{ mt: 1, fontSize:15, fontFamily:'Gilam Book', color:'#AED43A' }} component={RouLink} to='/password'>Olvide mi contraseña.</Link>
-          </Grid>
-          </Grid>
-          
-
-       
-
-
+            <Grid item xs={ 12 } sm={ 6 } lg={7} textAlign='center'>
+             <p style={{  fontSize:15, fontFamily:'Gilam Book', color:'#C0C0C0' }}>No tienes una cuenta? <Link sx={{  fontSize:15, fontFamily:'Gilam Bold', color:'#AED43A' }} component={RouLink} to='/register'>Crear Cuenta</Link></p>
+             
+            </Grid>
+            </Grid>
       </form>
     </MenuLayout>
   )
