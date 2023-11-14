@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 const API = axios.create({
-    baseURL:'http://4.tcp.ngrok.io:13058/api/rest'
+    baseURL:'https://af31659dd15e-8433454084604420537.ngrok-free.app/v1/graphql'
 });
 
 export default API;

@@ -20,6 +20,9 @@ const formValidations ={
 }
 
 export const CodePage = () => {
+  const handleInput = (e) => {
+    e.target.value = e.target.value.replace(/[^0-9]/g, ''); // Permite solo caracteres numéricos
+  };
   const history = useNavigate();
   const {startCode, user, code, status, errorMessage} = useAuthStore();
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -54,61 +57,54 @@ export const CodePage = () => {
   return (
     <PolizasLayout title="Contratación en línea">
       <form onSubmit={onSubmit}>
-        <Grid item xs={ 12 } md={6} lg={12} textAlign='center'>
+        <Grid item xs={12} md={12} lg={12} textAlign='center'>
             <p className="text-font-book">Se he enviado un código por SMS a su celular.</p>
             <p className="text-font-book">Por favor capture el código recibido:</p>
         </Grid>
-        <Grid container sx={{ mt: 6 }}>
-            <Grid  item xs={ 6 } md={3} lg={3}  textAlign='center'>
-            <CssTextField  sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:50, width:60  } }}
-            inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-            name='code1'
-            value={code1}
-            onChange={onInputChange}
-            error={!!code1Valid && formSubmitted}
-            helperText={ formSubmitted ? code1Valid : ''}/>
-            </Grid>
-            <Grid  item xs={ 6 } md={3} lg={3}   textAlign='center'>
-            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:50, width:60 } }}
-             name='code2'
-             value={code2}
-             onChange={onInputChange}
-             error={!!code2Valid && formSubmitted}
-             helperText={ formSubmitted ? code2Valid : ''}/>
-            </Grid>
-            <Grid  item xs={ 6 } md={3} lg={3}  textAlign='center'>
-            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:50,width:60  } }}
-             name='code3'
-             value={code3}
-             onChange={onInputChange}
-             error={!!code3Valid && formSubmitted}
-             helperText={ formSubmitted ? code3Valid : ''}/>
-            </Grid>
-            <Grid  item xs={ 6} md={3} lg={3}   textAlign='center'>
-            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:50, width:60 } }}
-             name='code4'
-             value={code4}
-             onChange={onInputChange}
-             error={!!code4Valid && formSubmitted}
-             helperText={ formSubmitted ? code4Valid : ''}/>
-            </Grid>
-            <Grid item xs={ 12} md={12} lg={12} sx={{ mt: 3, color: 'error.main' }} textAlign='center' >
-            <p className="text-font-book" display={ !!errorMessage ? '': 'none' }>{errorMessage}</p>
-            </Grid>
-            
+        <Grid container spacing={ 5 } sx={{ mt: 6 }}>
+          <Grid  item xs={12} md={12} lg={12}  textAlign='center'>
+            <CssTextField  sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:30, width:32, textAlign:'center'  } }}
+              inputProps={{ maxLength: 1, inputMode: 'numeric' }}
+              name='code1'
+              value={code1}
+              onChange={onInputChange}
+              onInput={handleInput}
+              error={!!code1Valid && formSubmitted}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:30, width:32, textAlign:'center' } }}
+            inputProps={{ maxLength: 1, inputMode: 'numeric' }}
+              name='code2'
+              value={code2}
+              onChange={onInputChange}
+              error={!!code2Valid && formSubmitted}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:30, width:32, textAlign:'center'  } }}
+            inputProps={{ maxLength: 1, inputMode: 'numeric' }}
+              name='code3'
+              value={code3}
+              onChange={onInputChange}
+              error={!!code3Valid && formSubmitted}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:30, width:32, textAlign:'center'} }}
+              inputProps={{ maxLength: 1, inputMode: 'numeric'}}
+              name='code4'
+              value={code4}
+              onChange={onInputChange}
+              error={!!code4Valid && formSubmitted}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </Grid>
+        </Grid>
+        <Grid item xs={ 12} md={12} lg={12} sx={{ mt: 3, color: 'error.main' }} textAlign='center' >
+          <p className="text-font-book" display={ !!errorMessage ? '': 'none' }>{errorMessage}</p>
         </Grid>
        
-        <Grid container spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
-            <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <SecundaryButton variant='contained' >
-                  Reenviar código
-                </SecundaryButton>
-            </Grid>
-              <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-                <PrimaryButton type='submit' variant='contained'>
-                 Continuar
-                </PrimaryButton>
-            </Grid>
+        <Grid container spacing={ 2 } sx={{ mb: 2, mt: 15 }}>
+          <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
+            <SecundaryButton variant='contained' >
+              Reenviar código
+            </SecundaryButton>
+          </Grid>
+          <Grid item xs={12} sm={6} textAlign='center'>
+            <PrimaryButton type='submit' variant='contained'>
+              Continuar
+            </PrimaryButton>
+          </Grid>
         </Grid>
         </form>
     </PolizasLayout>
