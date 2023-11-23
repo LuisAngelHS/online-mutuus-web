@@ -7,15 +7,9 @@ export const Footer = () => {
   return (
     <Box
     className='footer-d'
-    sx={{
-        // borderRadius:18,
-        // bgcolor: '#183B91',
-        // color: 'white',
-        p: 2,
-        // position: 'fixed',
-        // bottom: 0,
-        // width:1920,
-    }}
+    // sx={{
+    //     p: 1,
+    // }}
   >
     <Container>
       <Grid container spacing={2} alignItems="center">

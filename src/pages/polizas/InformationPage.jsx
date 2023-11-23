@@ -7,6 +7,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import {PrimaryButton, SecundaryButton} from "../../components/ButtonContent"
 import {CssTextField} from "../../components/TextFieldContent"
 import { useAuthStore, useForm } from '../../hooks';
+import Filters from '../../helpers/filter'
 import Swal from 'sweetalert2';
 let  terminos = false;
 let msjTerms = '';
@@ -157,7 +158,7 @@ export const InformationPage = () => {
         <form onSubmit={onSubmit}>
         <Grid container  spacing={2}>
             <Grid item xs={ 12 } md={12} lg={12}>
-            <p> {information.information === undefined ? '':  information.information +','} por favor ingresa la siguiente información: </p>
+            <p className=''>Hola {information.information === undefined ? '': Filters.capitalize( information.information)  +','} por favor ingresa la siguiente información: </p>
             </Grid>
             <Grid item xs={ 12 } md={3} lg={3}>
             <label htmlFor="Fecha">Fecha de Nacimiento: *</label>

@@ -34,7 +34,6 @@ export const LoginPage = () => {
     setFormSubmitted(true);
   
     if ( !isFormValid ) return;
-
     startLogin({email, password}).then(succ =>{
       console.log(succ);
       if(succ.ok === 'error'){
@@ -53,16 +52,16 @@ export const LoginPage = () => {
 
   return (
     <MenuLayout title="Iniciar Sesión">
-       <form onSubmit={onSubmit}>
+       <form onSubmit={onSubmit} className='text-form-acceso'>
        <Grid container justifyContent='center' spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
-            <Grid item xs={ 12 } md={7} lg={9}>
+            <Grid item xs={ 12 } md={10} lg={10}>
               <LoginButton type='submit' variant='contained' fullWidth >
                 Iniciar sesión con google
               </LoginButton>
             </Grid>
           </Grid>
         <Grid container justifyContent='center'>
-          <Grid item xs={ 12 } md={7} lg={10} sx={{ mt: 2 }} > 
+          <Grid item xs={ 10 } md={10} lg={10} sx={{ mt: 2 }} > 
             <label htmlFor="">Email</label>
             <CssTextField 
               type="email" 
@@ -79,7 +78,7 @@ export const LoginPage = () => {
           </Grid>
           </Grid>
           <Grid container justifyContent='center'>
-          <Grid item xs={ 12 } md={7} lg={10} sx={{ mt: 2 }}>
+          <Grid item xs={ 10 } md={10} lg={10} sx={{ mt: 2 }}>
           <label htmlFor="">Password</label>
           <CssTextField 
               type="password" 
@@ -116,7 +115,7 @@ export const LoginPage = () => {
               </LoginButton>
             </Grid>
             <Grid item xs={ 12 } sm={ 6 } lg={7} textAlign='center'>
-             <p style={{  fontSize:15, fontFamily:'Gilam Book', color:'#C0C0C0' }}>No tienes una cuenta? <Link sx={{  fontSize:15, fontFamily:'Gilam Bold', color:'#AED43A' }} component={RouLink} to='/register'>Crear Cuenta</Link></p>
+             <p style={{  fontSize:14, fontFamily:'Gilam Book', color:'#C0C0C0' }}>No tienes una cuenta? <Link sx={{  fontSize:14, fontFamily:'Gilam Bold', color:'#AED43A' }} component={RouLink} to='/register'>Crear Cuenta</Link></p>
              
             </Grid>
             </Grid>

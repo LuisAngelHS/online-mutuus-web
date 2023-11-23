@@ -37,7 +37,6 @@ export const useAuthStore = () =>{
                     'x-hasura-admin-secret': 'EEF66E22-320D-4617-B33C-DAD4A55C84B6'
                 }
             })
-            console.log(status);
             dispatch(login({uid: data.register_step_1.customer_id}))
             return {
                 ok: 'exito',
@@ -51,8 +50,6 @@ export const useAuthStore = () =>{
 
     }
     const startCode = async(succ ) =>{
-        console.log(succ);
-        // dispatch(checkingCredentials());
         try{
             const {data} = await API.post('/customer/validation', succ,
             {
@@ -79,7 +76,7 @@ export const useAuthStore = () =>{
                     Authorization: `Bearer ${succ}`
                 }
             })
-            let info = data.customer[0].person_info.first_name+' '+ data.customer[0].person_info.last_name+' '+data.customer[0].person_info.middle_name;
+            let info = data.customer[0].person_info.first_name;
             console.log(data);
             dispatch(informacion({information: info}))
         } catch(error){

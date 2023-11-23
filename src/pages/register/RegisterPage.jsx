@@ -22,7 +22,7 @@ const RegisterForm = {
 let EmaExpres =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)/;
 const letrasRegex = /^[A-Za-z]+$/
-const formValidations ={
+const formValidations = {
   first_name:[(value)=> value.length >=1 && letrasRegex.test(value) , 'El nombre es obligatorio.'],
   last_name:[(value)=> value.length >=1 && letrasRegex.test(value), 'El apellido es obligatorio.'],
   middle_name:[(value)=> value.length >=1 && letrasRegex.test(value), 'El apellido es obligatorio.'],
@@ -80,7 +80,6 @@ export const RegisterPage = () => {
     startRegister(result).then(succ=>{
       console.log(succ);
     })
-   
   }
   useEffect(() => {
     if ( status === 'authenticated' ) {
@@ -90,10 +89,10 @@ export const RegisterPage = () => {
 
   return (
     <MenuLayout title="Ingresa tus datos">
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className='text-form-acceso' >
           <Grid container spacing={ 2 } alignItems='center' justifyContent='center'>
             <Grid item xs={ 12 } md={9} lg={4}>
-            <label htmlFor="Nombre">Nombres</label>
+            <label htmlFor="Nombre">Nombre</label>
               <CssTextField
                 placeholder='Ingresa tus nombres aquí' 
                 fullWidth

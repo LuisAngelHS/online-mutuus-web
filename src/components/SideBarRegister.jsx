@@ -1,51 +1,71 @@
-import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
-import { TurnedInNot } from '@mui/icons-material';
+import * as React from 'react';
+import { useMediaQuery, Drawer, Grid,} from '@mui/material'
 import images from '../assets/img/mutuus-1/Character_1.png';
 import Logo1 from '../assets/img/mutuus-1/Logo1.png';
-export const SideBarRegister = ({ drawerWidth2 = 200 }) => {
+export const SideBarRegister = () => {
+    const isTable = useMediaQuery('(max-width: 1030px)');
+    const [open, setOpen] = React.useState(!isTable);
+
+    const isMobile = useMediaQuery('(max-width: 650px)');
+    const [open1, setOpen1] = React.useState(!isMobile);
+
+    const handleDrawerClose = () => {
+        if (isTable) {
+            setOpen(false);
+        }
+        if (isMobile) {
+            setOpen1(false);
+        }
+    };
+
+    const handleDrawerToggle = () => {
+        setOpen(!open);
+        setOpen(!open1);
+    };
   return (
-    <Box
-        // component='nav'
-        sx={{ color:'#183B91', width: { sm: drawerWidth2 }, flexShrink: { sm: 0 }}}
-    >
         <Drawer
-            variant='permanent' // temporary
-            open
-            sx={{ 
-                display: { xs: 'block' },
-               
-               
-                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth2,  backgroundColor:'#fff'}
+            variant={isTable && isMobile ? 'temporary' : 'permanent'}
+            open={open}
+            onClose={handleDrawerClose}
+            onClick={handleDrawerToggle}
+            ModalProps={{
+            keepMounted: true,
             }}
         >
-               <Grid sx={{ 
-                justifyContent:'center',
-                alignItems: 'center',
-                textAlign:'center',
-                
+            <Grid sx={{
+                 marginLeft:5,
+                 marginRight:5,
+                 alignItems: 'center',
+                 textAlign:'center',
+                 position:'relative',
+                 top: 30,
             }}>
-            <img src={Logo1}/>
+                <br />
+            <img src={Logo1}  width={isTable ? '100' : '350'}/>
             </Grid>
-            <Grid sx={{ 
+            <Grid sx={{
                 justifyContent:'center',
                 alignItems: 'center',
                 textAlign:'center',
                 marginTop:20
-                
             }}>
-           
-            <p style={{fontSize:35} }>El seguro que buscas, <strong style={{color:'#AED43A'} }>NO</strong>  es un seguro.</p>
+            {
+                isTable ? <p style={{fontSize:10} }></p>
+                 : 
+                 <p style={{fontSize:21, fontFamily:'Gilam Regular'} }>El seguro que buscas, <strong style={{color:'#AED43A'} }>
+                    NO</strong>  es un seguro.</p>
+
+            }
             </Grid>
             <Grid sx={{ 
                 justifyContent:'center',
                 alignItems: 'center',
-                marginLeft:2,
-                marginTop:10
-            }}>
-                <img src={images} width="550" height="420"/>
+                position:'absolute',
+                bottom:'0'
+                }}>
+                <img src={images}width={isTable ? '0' : '400'}/>
             </Grid>
         </Drawer>
 
-    </Box>
   )
 }
