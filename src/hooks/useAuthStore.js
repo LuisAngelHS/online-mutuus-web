@@ -37,10 +37,10 @@ export const useAuthStore = () =>{
                     'x-hasura-admin-secret': 'EEF66E22-320D-4617-B33C-DAD4A55C84B6'
                 }
             })
-            dispatch(login({uid: data.register_step_1.customer_id}))
+            dispatch(login({uid: data.register_step_1.customer_email}))
             return {
                 ok: 'exito',
-                message: data.register_step_1.customer_id,
+                message: data.register_step_1.customer_email,
             }
         } catch(error){
             console.log(error);

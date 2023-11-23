@@ -30,7 +30,6 @@ export const CodePage = () => {
   const { formState,code1, code2,code3, code4, onInputChange,
     isFormValid, code1Valid, code2Valid, code3Valid, code4Valid} = useForm(CodeForm, formValidations)
   const onSubmit = (event) =>{
-    console.log(code);
     event.preventDefault();
     setFormSubmitted(true);
     const {code1,
@@ -39,8 +38,8 @@ export const CodePage = () => {
       code4} = formState;
     const result = {
       'customer_code':{
-        code: code1+code2+code3+code4,
-        customer_id: user.uid
+        code: '89238936',
+        customer_email: user.uid
       }
     } 
     if ( !isFormValid ) return;
