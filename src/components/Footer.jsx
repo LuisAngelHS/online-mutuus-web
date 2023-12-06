@@ -7,25 +7,22 @@ export const Footer = () => {
   return (
     <Box
     className='footer-d'
-    // sx={{
-    //     p: 1,
-    // }}
   >
     <Container>
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={12} md={6}>
-          <Typography variant="body1" align="center">
+          <Typography sx={{fontSize:12, fontFamily:'Montserrat'}} variant="body1" align="center">
             © 2023 Mutuus. Todos los derechos reservados.
           </Typography>
         </Grid>
         <Grid item xs={12} md={6} container justifyContent="center">
           <Link href="https://www.facebook.com/psmutuus/?locale=es_LA" target="_blank" color="inherit">
     
-      <FacebookIcon />
+      <FacebookIcon sx={{width:50, height:20}}/>
 
           </Link>
           <Link href="https://www.linkedin.com/company/psmutuus/" target="_blank" color="inherit">
-            <LinkedInIcon />
+            <LinkedInIcon sx={{width:50, height:20}}/>
           </Link>
         </Grid>
       </Grid>

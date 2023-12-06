@@ -50,10 +50,10 @@ export const InformationPage = () => {
     const {formState, birth_date,rfc,onInputChange,
         isFormValid,birth_dateValid, rfcValid} = useForm(InformationsForm, formValidations)
         const onSubmit = (event) =>{
-            console.log(terminos);
+        
             event.preventDefault();
             setFormSubmitted(true);
-            console.log(selectedOption);
+          
             const {birth_date, rfc} = formState;
            
 
@@ -85,7 +85,6 @@ export const InformationPage = () => {
             } 
           
             if ( !isFormValid && !selectedOption && !selectedOption2  && !selectedOption3 ) return;
-        
             const resultado = {
                 height_id: selectedOption2.id,
                 wigth_id:selectedOption.id,
@@ -106,11 +105,9 @@ export const InformationPage = () => {
                 if (result.isConfirmed) {
                   registrationInfo(resultado).then(succ=>{
                     history('/membershi');
-              console.log(succ);
             })
                 }
               })
-            // console.log(result);
            
           }
 
@@ -193,8 +190,8 @@ export const InformationPage = () => {
             </Grid>
             <Grid item xs={ 12 } md={3} lg={3} >
             <Autocomplete
-                options={peso.pesos}
-                getOptionLabel={(option) => option.value}
+                options={pesos}
+                getOptionLabel={(option) => option.label}
                 value={selectedOption}
                 onChange={handleInputChange}
                 disablePortal
@@ -214,8 +211,8 @@ export const InformationPage = () => {
             </Grid>
             <Grid item xs={ 12 } md={4} lg={4} >
             <Autocomplete
-             options={altura.altura}
-             getOptionLabel={(option) => option.value}
+             options={alturas}
+             getOptionLabel={(option) => option.label}
              value={selectedOption2}
              onChange={handleInputChange2}
           disablePortal
@@ -265,9 +262,9 @@ export const InformationPage = () => {
             {/* <p className="text-font-book"> {msjTerms}</p> */}
             </Grid>
         </Grid>
-        <Grid container spacing={ 2 } sx={{ mt: 1 }}>
+        <Grid container spacing={ 2 } sx={{ mt: 0 }}>
         <Grid item xs={ 12 } md={6} lg={6} >
-                <SecundaryButton variant='contained' component={RouLink}  to='/code'>
+                <SecundaryButton variant='contained' component={RouLink}  to='/login'>
                 Regresar
                 </SecundaryButton>
             </Grid>
@@ -288,16 +285,16 @@ const top100Films = [
   { label: 'Femenino' }
 ];
 
-// const alturas = [
-//     {
-//         id:'5448f4eb-2df6-44c2-8c49-8b4a4d8468f4',
-//         label: '178.9'
-//     }
-// ];
+const alturas = [
+    {
+        id:'5448f4eb-2df6-44c2-8c49-8b4a4d8468f4',
+        label: '178.9'
+    }
+];
 
-// const pesos = [
-//     {
-//         id:'fe5484e7-a80f-49e5-804a-6a3416a77197',
-//         label: '78.9'
-//     }
-// ]
+const pesos = [
+    {
+        id:'fe5484e7-a80f-49e5-804a-6a3416a77197',
+        label: '78.9'
+    }
+]

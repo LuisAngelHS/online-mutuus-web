@@ -1,5 +1,5 @@
 import {  Grid } from '@mui/material';
-import Logo2 from '../assets/img/mutuus-1/Logo2.png';
+import Logo1 from '../assets/img/mutuus-1/Logo1.png';
 import { Footer } from '../components';
 
 export const PolizasLayout = ({ children, title = ''   }) => {
@@ -8,20 +8,17 @@ export const PolizasLayout = ({ children, title = ''   }) => {
      container
       spacing={ 0 }
       direction="column"
-      alignItems="center"
-      justifyContent="center"
-      className='text-font-book-form fondoColor2'
-      sx={{ color: 'primary.main',  marginTop:7}}
+      className='general-informations fondoColor2'
+      sx={{ color: 'primary.main'}}
     >
     
-      <Grid textAlign='center'>
-      <img src={Logo2} alt="Mutuus" width="230" height="85" align='center'/>
+    <Grid container sx={{justifyContent:'center'}} className='image-intro'>
+      <img src={Logo1} alt="Mutuus" width="230" height="85" align='center'/>
       </Grid>
-      <Grid item sx={{ width: { xs:300, sm: 400, md:500, lg:950}, height: { xs:1050, sm: 500, md:500, lg:500},}} >
-            <br />
-            <br />
-            { children }
-            
+      <Grid container sx={{justifyContent:'center', paddingTop:5}}>
+        <Grid item xs={ 10 } md={9} lg={9}>
+        { children }
+        </Grid>
       </Grid>
       <Footer/>
     </Grid>

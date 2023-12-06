@@ -1,10 +1,12 @@
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom"
 import { Grid } from "@mui/material"
 import { PolizasLayout } from "../../layout/PolizasLayout"
-import { useNavigate } from "react-router-dom"
-import {PrimaryButton, SecundaryButton} from "../../components/ButtonContent"
+import {PrimaryButtonCode, SecundaryButtonCode} from "../../components/ButtonContent"
 import {CssTextField} from "../../components/TextFieldContent"
 import { useAuthStore, useForm } from '../../hooks';
-import { useState, useEffect } from 'react';
+
+import Swal from 'sweetalert2';
 
 const CodeForm = {
   code1:'',
@@ -43,69 +45,90 @@ export const CodePage = () => {
       }
     } 
     if ( !isFormValid ) return;
-    startCode(result);
-   
+    startCode(result).then(succ=>{
+      Swal.fire({
+        title: "¡Exito!",
+        text: "Se validó el código correctamente",
+        icon: "success",
+        confirmButtonText: 'Aceptar'
+      }).then(succ => {
+        if (succ.isConfirmed) {
+          // history('/login');
+        }
+      })
+    })
   }
 
-  useEffect(() => {
-    if ( status === 'CodeAuth' ) {
-      history('/information');
-    }   
-  }, [status])
 
   return (
     <PolizasLayout title="Contratación en línea">
+     
       <form onSubmit={onSubmit}>
+      <Grid container className="code_validations" sx={{justifyContent:'center'}}>
         <Grid item xs={12} md={12} lg={12} textAlign='center'>
-            <p className="text-font-book">Se he enviado un código por SMS a su celular.</p>
-            <p className="text-font-book">Por favor capture el código recibido:</p>
+            <p>Se he enviado un código por SMS a su celular.</p>
+            <p>Por favor capture el código recibido:</p>
         </Grid>
-        <Grid container spacing={ 5 } sx={{ mt: 6 }}>
-          <Grid  item xs={12} md={12} lg={12}  textAlign='center'>
-            <CssTextField  sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:30, width:32, textAlign:'center'  } }}
+        <Grid container spacing={ 0 } sx={{paddingTop:5}} textAlign='center'>
+          <Grid  item xs={12} md={12} lg={12} className="container-code_access">
+            <Grid item xs={12} md={12} lg={4}>
+            <CssTextField  sx={{ input: { color: '#000000', fontFamily:'Montserrat', height:52, width:52, textAlign:'center', fontSize:30} }}
               inputProps={{ maxLength: 1, inputMode: 'numeric' }}
               name='code1'
               value={code1}
               onChange={onInputChange}
               onInput={handleInput}
-              error={!!code1Valid && formSubmitted}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:30, width:32, textAlign:'center' } }}
-            inputProps={{ maxLength: 1, inputMode: 'numeric' }}
+              error={!!code1Valid && formSubmitted}/>
+            </Grid>
+            <Grid item xs={12} md={12} lg={4}>
+              <CssTextField sx={{ input: { color: '#000000', fontFamily:'Montserrat', height:52, width:52, textAlign:'center', fontSize:30,  } }}
+              inputProps={{ maxLength: 1, inputMode: 'numeric' }}
               name='code2'
               value={code2}
               onChange={onInputChange}
-              error={!!code2Valid && formSubmitted}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:30, width:32, textAlign:'center'  } }}
-            inputProps={{ maxLength: 1, inputMode: 'numeric' }}
+              onInput={handleInput}
+              error={!!code2Valid && formSubmitted}/>
+            </Grid>
+            <Grid item xs={12} md={12} lg={4}>
+            <CssTextField sx={{ input: { color: '#000000', fontFamily:'Montserrat', height:52, width:52, textAlign:'center', fontSize:30,   } }}
+              inputProps={{ maxLength: 1, inputMode: 'numeric' }}
               name='code3'
               value={code3}
               onChange={onInputChange}
-              error={!!code3Valid && formSubmitted}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <CssTextField sx={{ input: { color: '#183B91', fontFamily:'Gilam Book', height:30, width:32, textAlign:'center'} }}
+              onInput={handleInput}
+              error={!!code3Valid && formSubmitted}/>
+            </Grid>
+            <Grid item xs={12} md={12} lg={4}>
+            <CssTextField sx={{ input: { color: '#000000', fontFamily:'Montserrat', height:52, width:52, textAlign:'center', fontSize:30,  } }}
               inputProps={{ maxLength: 1, inputMode: 'numeric'}}
               name='code4'
               value={code4}
+              onInput={handleInput}
               onChange={onInputChange}
-              error={!!code4Valid && formSubmitted}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              error={!!code4Valid && formSubmitted}/>
+            </Grid>
           </Grid>
         </Grid>
         <Grid item xs={ 12} md={12} lg={12} sx={{ mt: 3, color: 'error.main' }} textAlign='center' >
-          <p className="text-font-book" display={ !!errorMessage ? '': 'none' }>{errorMessage}</p>
+          <p sx={{fontSize:15, fontFamily:'Montserrat'}} display={ !!errorMessage ? '': 'none' }>{errorMessage}</p>
         </Grid>
        
-        <Grid container spacing={ 2 } sx={{ mb: 2, mt: 15 }}>
-          <Grid item xs={ 12 } sm={ 6 } textAlign='center'>
-            <SecundaryButton variant='contained' >
-              Reenviar código
-            </SecundaryButton>
+        <Grid container className="button-code" spacing={ 0 } sx={{ mb: 2 }}>
+          <Grid item xs={ 12 } sm={ 6 }  md={6} lg={6} textAlign='center'>
+            <SecundaryButtonCode variant='contained' >
+              Reenviar Código
+            </SecundaryButtonCode>
           </Grid>
-          <Grid item xs={12} sm={6} textAlign='center'>
-            <PrimaryButton type='submit' variant='contained'>
+          <Grid item s={ 12 } sm={ 6 }  md={6} lg={6} textAlign='center'>
+            <PrimaryButtonCode type='submit' variant='contained'>
               Continuar
-            </PrimaryButton>
+            </PrimaryButtonCode>
           </Grid>
         </Grid>
+        </Grid>
         </form>
+    
+
     </PolizasLayout>
   )
 }

@@ -8,15 +8,24 @@ export const useAuthStore = () =>{
     const {status, user, errorMessage, code, altura, peso, information} = useSelector(state => state.auth);
     const dispatch = useDispatch()
 
-    const startLogin = async({email, password}) =>{
-        console.log({email, password});
+    const startLogin = async(succ) =>{
         dispatch(checkingCredentials());
         try{
-            const {data} = await API.post('/customer/login', {email, password})
+            const {data} = await API.post('/login', succ,
+            {
+                headers:{
+                    'x-hasura-admin-secret': 'EEF66E22-320D-4617-B33C-DAD4A55C84B6'
+                }
+            })
+            getInformation(data.login.access_token);
+            WeightList(data.login.access_token)
+            HeightList(data.login.access_token)
             dispatch(login({name: data.message, uid: data.name}))
-            console.log(data);
+            return {
+                ok: 'exito',
+                message: 'Exito usuario',
+            }
         } catch(error){
-            console.log(error);
             dispatch(logout('Implementacion pendiente.'))
             return {
                 ok: 'error',
@@ -43,7 +52,6 @@ export const useAuthStore = () =>{
                 message: data.register_step_1.customer_email,
             }
         } catch(error){
-            console.log(error);
             dispatch(logout('Ha ocurrido un error.'))
         }
 
@@ -57,17 +65,19 @@ export const useAuthStore = () =>{
                     'x-hasura-admin-secret': 'EEF66E22-320D-4617-B33C-DAD4A55C84B6'
                 }
             })
-            getInformation(data.validation.access_token);
-            WeightList(data.validation.access_token)
-            HeightList(data.validation.access_token)
+          
+           
             dispatch(codeOuth({token: data.validation.access_token}))
+            return {
+                ok: 'exito',
+                message: data.validation.status,
+            }
         } catch(error){
             dispatch(codeError('Código incorrector favor de Verificar.'))
         }
     }
 
     const getInformation = async(succ ) =>{
-        console.log(succ);
         // dispatch(checkingCredentials());
         try{
             const {data} = await API.get('/customer/information',
@@ -77,7 +87,7 @@ export const useAuthStore = () =>{
                 }
             })
             let info = data.customer[0].person_info.first_name;
-            console.log(data);
+          
             dispatch(informacion({information: info}))
         } catch(error){
             console.log(error);
@@ -88,7 +98,6 @@ export const useAuthStore = () =>{
     }
 
     const WeightList = async(succ ) =>{
-        console.log(succ);
         // dispatch(checkingCredentials());
         try{
             const {data} = await API.get('/weight',
@@ -97,7 +106,6 @@ export const useAuthStore = () =>{
                     Authorization: `Bearer ${succ}`
                 }
             })
-            console.log(data);
             dispatch(pesos({pesos: data.wight}))
         } catch(error){
             console.log(error);
@@ -108,7 +116,6 @@ export const useAuthStore = () =>{
     }
 
     const HeightList = async(succ ) =>{
-        console.log(succ);
         // dispatch(checkingCredentials());
         try{
             const {data} = await API.get('/height',
@@ -117,7 +124,6 @@ export const useAuthStore = () =>{
                     Authorization: `Bearer ${succ}`
                 }
             })
-            console.log(data);
             dispatch(alturas({altura: data.height}))
         } catch(error){
             console.log(error);
