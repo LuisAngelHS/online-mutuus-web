@@ -9,7 +9,7 @@ export const MenuLayout = ({ children, title = '', }) => {
 
     <Grid
       container
-      className='login-acceso fondoColor'
+      className='fondoColor login-acceso'
       sx={{ color: 'primary.main', minHeight: '100vh'}}
     >
      
